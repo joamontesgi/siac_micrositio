@@ -1,0 +1,54 @@
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{parskip}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=teal!60!black,
+  pdftitle={Micrositio SIAC — Documentación técnica},
+}
+
+\definecolor{codebg}{RGB}{245,247,250}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{codebg},
+  frame=single,
+  rulecolor=\color{gray!40},
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+}
+
+\title{%
+  \textbf{Micrositio SIAC}\\[0.4em]
+  \large Documentación de arquitectura, tecnologías, despliegue y pruebas\\[0.3em]
+  \normalsize Universidad Nacional de Colombia
+}
+\author{Sistema Interno de Aseguramiento de la Calidad (SIAC)}
+\date{23 de octubre de 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\clearpage
+
+\input{sections/arquitectura}
+\input{sections/tecnologias}
+\input{sections/despliegue}
+\input{sections/pruebas}
+
+\end{document}

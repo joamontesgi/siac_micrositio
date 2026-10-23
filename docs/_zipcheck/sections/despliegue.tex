@@ -1,0 +1,117 @@
+\chapter{Despliegue e instrucciones de instalación}
+
+\section{Requisitos del servidor}
+\begin{itemize}
+  \item PHP 8.0+ con extensiones: \texttt{openssl}, \texttt{pdo}, \texttt{mbstring}, \texttt{tokenizer}, \texttt{xml}, \texttt{ctype}, \texttt{json}, \texttt{fileinfo}.
+  \item Composer 2.x.
+  \item MySQL/MariaDB en producción.
+  \item Servidor web con \textbf{document root} en \texttt{micrositio-siac/public}.
+  \item Python~3 en la máquina de \emph{build} (regeneración de JSON e imágenes).
+\end{itemize}
+
+\section{Instalación inicial}
+\begin{lstlisting}[language=bash]
+cd micrositio-siac
+composer install --no-dev --optimize-autoloader
+cp .env.example .env
+php artisan key:generate
+\end{lstlisting}
+
+\subsection{Variables de entorno (\texttt{.env})}
+\begin{lstlisting}
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://siac.unal.edu.co
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=siac_micrositio
+DB_USERNAME=...
+DB_PASSWORD=...
+
+SIAC_ADMIN_EMAIL=admin@unal.edu.co
+SIAC_ADMIN_PASSWORD=...
+\end{lstlisting}
+
+\section{Generación de contenido desde fuentes}
+\begin{lstlisting}[language=bash]
+python scripts/extract_simulacro_images.py
+python scripts/build_site_content.py
+python scripts/import_indicators_from_excel.py
+\end{lstlisting}
+
+\section{Base de datos y almacenamiento}
+\begin{lstlisting}[language=bash]
+php artisan migrate --force
+php artisan db:seed --class=AdminUserSeeder --force
+php artisan db:seed --class=SiacSeeder --force
+php artisan storage:link
+\end{lstlisting}
+
+\section{Optimización (producción)}
+\begin{lstlisting}[language=bash]
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+\end{lstlisting}
+
+\section{Apache (ejemplo)}
+\begin{lstlisting}
+<VirtualHost *:443>
+    ServerName siac.unal.edu.co
+    DocumentRoot "C:/ruta/micrositio-siac/public"
+    <Directory "C:/ruta/micrositio-siac/public">
+        AllowOverride All
+        Require all granted
+    </Directory>
+    SSLEngine on
+</VirtualHost>
+\end{lstlisting}
+
+\textbf{Importante:} no crear la carpeta física \texttt{public/documentos/} (conflicto con la ruta Laravel). Los archivos de referencia van en \texttt{public/fuentes-siac/}.
+
+\section{Nginx (ejemplo)}
+\begin{lstlisting}
+server {
+    listen 443 ssl;
+    server_name siac.unal.edu.co;
+    root /var/www/micrositio-siac/public;
+    index index.php;
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+\end{lstlisting}
+
+\section{Desarrollo con Laragon}
+\begin{enumerate}
+  \item Document root del virtual host: \texttt{...\textbackslash micrositio-siac\textbackslash public}.
+  \item Alternativa: \texttt{php artisan serve} en \url{http://127.0.0.1:8000}.
+  \item Tras cambiar \texttt{.env}: \texttt{php artisan config:clear}.
+\end{enumerate}
+
+\section{Permisos en Linux}
+\begin{lstlisting}[language=bash]
+chown -R www-data:www-data storage bootstrap/cache
+chmod -R ug+rwx storage bootstrap/cache
+\end{lstlisting}
+
+\section{Checklist de despliegue}
+\begin{enumerate}
+  \item Actualizar código (\texttt{git pull} o artefacto CI).
+  \item \texttt{composer install --no-dev --optimize-autoloader}.
+  \item Regenerar JSON/imágenes si cambió PDF o Excel.
+  \item \texttt{php artisan migrate --force}.
+  \item Cachear config, rutas y vistas.
+  \item Reiniciar PHP-FPM si aplica.
+  \item Smoke test: \texttt{/}, \texttt{/documentos}, \texttt{/pagina/que-es-siac}, login admin.
+\end{enumerate}
+
+\section{Monitoreo}
+Logs en \texttt{storage/logs/laravel.log}; vigilar HTTP 5xx y tiempos en \texttt{/} y \texttt{/documentos}; espacio en \texttt{storage/app/public} para cargas administradas.

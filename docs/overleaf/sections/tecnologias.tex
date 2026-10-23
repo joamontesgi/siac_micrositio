@@ -1,0 +1,62 @@
+\chapter{Tecnologías utilizadas}
+
+\section{Backend}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    \textbf{Tecnología} & \textbf{Versión} & \textbf{Uso} \\
+    \midrule
+    PHP & 8.0+ (pruebas: 8.3.28) & Runtime \\
+    Laravel & 9.x & MVC, rutas, autenticación, Eloquent \\
+    Composer & 2.x & Gestión de dependencias \\
+    MySQL / MariaDB & 5.7+ / 10.x & Producción \\
+    SQLite & 3 & Pruebas PHPUnit (\texttt{:memory:}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Frontend (área de contenido)}
+\begin{itemize}
+  \item \textbf{Blade} --- plantillas Laravel.
+  \item \textbf{Bootstrap 4} --- grid, formularios y componentes.
+  \item \textbf{Plantilla UNAL} --- cabecera, pie y accesibilidad (\texttt{public/unal/}).
+  \item \textbf{CSS SIAC} --- paleta institucional (\texttt{\#232a5e}, \texttt{\#00b8a9}, \texttt{\#ffc107}, \texttt{\#a8b0d6}).
+  \item \textbf{JavaScript} --- filtros de indicadores (\texttt{siac-indicators.js}), jQuery/Bootstrap UNAL.
+\end{itemize}
+
+\section{Datos y automatización (Python)}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Herramienta} & \textbf{Función} \\
+    \midrule
+    Python 3 & Scripts de construcción de contenido \\
+    openpyxl & Importación del Excel de indicadores \\
+    PyMuPDF (fitz) & Renderizado de diapositivas del PDF del simulacro \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Pruebas y calidad}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Herramienta} & \textbf{Función} \\
+    \midrule
+    PHPUnit 9.x & Pruebas unitarias y de funcionalidad \\
+    Locust 2.x & Pruebas de carga y capacidad HTTP \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Dependencias PHP relevantes}
+\texttt{laravel/framework} (v9), \texttt{guzzlehttp/guzzle} (v7), \texttt{laravel/sanctum} (v2); en desarrollo: \texttt{phpunit/phpunit} (v9), \texttt{fakerphp/faker}.
+
+\section{Infraestructura}
+\begin{itemize}
+  \item \textbf{Desarrollo:} Laragon o \texttt{php artisan serve} (\url{http://127.0.0.1:8000}).
+  \item \textbf{Producción:} Apache o Nginx + PHP-FPM, TLS, document root \texttt{public/}.
+\end{itemize}

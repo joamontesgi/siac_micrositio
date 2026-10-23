@@ -45,6 +45,8 @@ Abrir [http://127.0.0.1:8000](http://127.0.0.1:8000).
 | [docs/TECNOLOGIAS.md](docs/TECNOLOGIAS.md) | Stack técnico |
 | [docs/DESPLIEGUE.md](docs/DESPLIEGUE.md) | Instalación y despliegue en producción |
 | [docs/INFORME_PRUEBAS.md](docs/INFORME_PRUEBAS.md) | Resultados PHPUnit y Locust |
+| [docs/overleaf/](docs/overleaf/) | LaTeX → PDF (Overleaf): arquitectura, tecnologías, despliegue, pruebas |
+| [docs/SIAC-micrositio-documentacion-overleaf.zip](docs/SIAC-micrositio-documentacion-overleaf.zip) | ZIP para importar en Overleaf |
 
 ### Pruebas
 

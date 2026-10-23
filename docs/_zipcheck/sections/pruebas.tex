@@ -1,0 +1,153 @@
+\chapter{Documentación e informe de pruebas}
+
+\section{Alcance}
+\begin{itemize}
+  \item \textbf{Pruebas unitarias y de funcionalidad} con PHPUnit (Laravel Test), directorios \texttt{tests/Unit} y \texttt{tests/Feature}.
+  \item \textbf{Pruebas de carga y capacidad} con Locust (\texttt{loadtests/locustfile.py}).
+\end{itemize}
+
+\section{Entorno de ejecución del informe}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    \textbf{Parámetro} & \textbf{Valor} \\
+    \midrule
+    Fecha de ejecución & 23 de octubre de 2026 \\
+    Proyecto & \texttt{micrositio-siac} (Laravel 9) \\
+    PHP (CLI) & 8.3.28 \\
+    Base de datos en tests & SQLite \texttt{:memory:} \\
+    Servidor para Locust & \url{http://127.0.0.1:8000} (\texttt{php artisan serve}) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Comandos}
+\begin{lstlisting}[language=bash]
+# Unitarias y funcionalidad
+php artisan test
+
+# Carga (headless)
+pip install -r loadtests/requirements.txt
+locust -f loadtests/locustfile.py --headless -u 20 -r 5 -t 30s \
+  --host=http://127.0.0.1:8000
+\end{lstlisting}
+
+\section{Resultados PHPUnit (ejecutados)}
+\textbf{Resumen:} \textcolor{green!50!black}{\textbf{19 pruebas aprobadas}}, 0 fallos, 0 omitidas (salvo skip si falta JSON en entorno vacío). \textbf{Duración:} 1,94~s.
+
+\subsection{Tests\Unit\textbackslash DocumentModelTest (5)}
+\begin{itemize}
+  \item component label uses config
+  \item actua label for todas phase
+  \item download href uses route for public relative url
+  \item filter by search query
+  \item filter by functional component
+\end{itemize}
+
+\subsection{Tests\Unit\textbackslash SiacContentRepositoryTest (2)}
+\begin{itemize}
+  \item loads pages from site content json
+  \item menu and contact email are available
+\end{itemize}
+
+\subsection{Tests\Unit\textbackslash SiacIndicatorRepositoryTest (2)}
+\begin{itemize}
+  \item indicators json provides matrix data
+  \item filter by conjunto
+\end{itemize}
+
+\subsection{Tests\Feature\textbackslash AuthAndAdminTest (3)}
+\begin{itemize}
+  \item guest is redirected from admin documents
+  \item authenticated user can access admin documents
+  \item login with valid credentials
+\end{itemize}
+
+\subsection{Tests\Feature\textbackslash DocumentDownloadTest (2)}
+\begin{itemize}
+  \item download from public fuentes siac
+  \item download missing file returns 404
+\end{itemize}
+
+\subsection{Tests\Feature\textbackslash SiacPublicRoutesTest (5)}
+\begin{itemize}
+  \item home page returns ok
+  \item documents index returns ok
+  \item known content page returns ok
+  \item unknown page returns 404
+  \item search page returns ok
+\end{itemize}
+
+\subsection{Salida de consola (extracto sin códigos ANSI)}
+\begin{lstlisting}
+PASS  Tests\Unit\DocumentModelTest
+PASS  Tests\Unit\SiacContentRepositoryTest
+PASS  Tests\Unit\SiacIndicatorRepositoryTest
+PASS  Tests\Feature\AuthAndAdminTest
+PASS  Tests\Feature\DocumentDownloadTest
+PASS  Tests\Feature\SiacPublicRoutesTest
+
+Tests:  19 passed
+Time:   1.94s
+\end{lstlisting}
+
+\section{Resultados Locust (ejecutados)}
+\textbf{Parámetros:} 20 usuarios simulados, rampa 5 usuarios/s, duración 30~s, host \url{http://127.0.0.1:8000}.
+
+\subsection{Resumen agregado}
+\begin{table}[H]
+  \centering
+  \begin{tabular}{@{}lr@{}}
+    \toprule
+    \textbf{Métrica} & \textbf{Valor} \\
+    \midrule
+    Peticiones totales & 91 \\
+    Fallos HTTP & 0 (0,00\,\%) \\
+    Tiempo medio (aprox.) & 4664~ms \\
+    Percentil 50 (p50) & 5000~ms \\
+    Percentil 95 (p95) & 5900~ms \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Escenarios Locust}
+\begin{itemize}
+  \item \textbf{SiacVisitante:} inicio, documentos, páginas SIAC, búsqueda, CSS del sitio.
+  \item \textbf{SiacDocumentosFiltrados:} \texttt{GET /documentos} con parámetros de búsqueda y componente.
+\end{itemize}
+
+\subsection{Rutas ejercitadas (con peticiones en la corrida)}
+\begin{table}[H]
+  \centering
+  \small
+  \begin{tabular}{@{}lrr@{}}
+    \toprule
+    \textbf{Endpoint} & \textbf{Peticiones} & \textbf{Fallos} \\
+    \midrule
+    \texttt{GET /documentos (filtros)} & 46 & 0 \\
+    \texttt{GET /documentos} & 14 & 0 \\
+    \texttt{GET /} & 7 & 0 \\
+    \texttt{GET /pagina/que-es-siac} & 8 & 0 \\
+    \texttt{GET /buscar} & 5 & 0 \\
+    \texttt{GET /pagina/matriz-indicadores} & 5 & 0 \\
+    \texttt{GET /pagina/presentacion-simulacro} & 3 & 0 \\
+    \texttt{GET /css/siac.css} & 3 & 0 \\
+    \midrule
+    \textbf{Agregado} & \textbf{91} & \textbf{0} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textit{Nota:} en entorno local con el servidor de desarrollo de PHP los tiempos son orientativos. En producción se recomienda repetir Locust con \texttt{-u 30 -t 60s} tras el despliegue y comparar p95 con objetivo $<$ 3~s según capacidad del servidor.
+
+\section{Criterios de aceptación sugeridos}
+\begin{itemize}
+  \item PHPUnit: 0 fallos antes de cada despliegue.
+  \item Locust: tasa de error HTTP $<$ 1\,\%; revisar p95 en rutas críticas (\texttt{/}, \texttt{/documentos}).
+  \item Smoke manual: inicio, documentos, descarga Excel de fuentes, login administrador.
+\end{itemize}
+
+\section{Regeneración del informe}
+En Windows: \texttt{powershell -File scripts/run\_tests\_and\_report.ps1}.\\
+Archivos de salida: \texttt{docs/phpunit-last-run.txt}, \texttt{docs/locust-last-run.txt}, \texttt{docs/INFORME\_PRUEBAS.md}.

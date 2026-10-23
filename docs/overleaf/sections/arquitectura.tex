@@ -1,0 +1,76 @@
+\chapter{Arquitectura del sistema}
+
+\section{Propósito}
+El micrositio SIAC es una aplicación web institucional del \emph{Sistema Interno de Aseguramiento de la Calidad} de la Universidad Nacional de Colombia. Publica contenidos del simulacro del 6 de octubre, la matriz de indicadores (Excel), documentos clasificados por componentes funcionales y ciclo ACTÚA, y un módulo de administración restringido.
+
+\section{Vista general}
+La solución sigue un patrón MVC en Laravel~9, con contenido editorial en JSON estático y persistencia relacional para documentos y usuarios administradores.
+
+\begin{figure}[H]
+  \centering
+  \fbox{\parbox{0.92\textwidth}{\small
+  \textbf{Navegador} (plantilla UNAL: cabecera / contenido / pie)\\[0.4em]
+  $\downarrow$\\[0.3em]
+  \textbf{Laravel 9} --- \texttt{routes/web.php}\\
+  \hspace*{1em}SiacController $\cdot$ DocumentController $\cdot$ Admin $\cdot$ Auth\\[0.4em]
+  $\swarrow$ \hspace{4em} $\searrow$\\[0.2em]
+  JSON estático (\texttt{site\_content.json}, \texttt{indicators.json})
+  \hspace{2em} BD (\texttt{documents}, \texttt{users})\\[0.4em]
+  $\downarrow$\\[0.3em]
+  Archivos: \texttt{storage/app/public}, \texttt{public/fuentes-siac}, \texttt{public/images/simulacro}
+  }}
+  \caption{Capas lógicas del micrositio}
+\end{figure}
+
+\section{Fuentes de datos}
+\begin{longtable}{@{}p{3.2cm}p{4.2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Fuente} & \textbf{Generación} & \textbf{Consumo en el sitio} \\
+\midrule
+\endhead
+PDF simulacro 6-oct &
+\texttt{extract\_simulacro\_images.py}, \texttt{build\_site\_content.py} &
+Páginas «Presentación SIAC» y diapositivas \\
+Excel indicadores &
+\texttt{import\_indicators\_from\_excel.py} &
+\texttt{/pagina/matriz-indicadores} \\
+SIAC al detalle &
+\texttt{content/siac\_al\_detalle.json} &
+Menú y páginas temáticas \\
+Documentos &
+Admin + seeder &
+\texttt{/documentos} y descargas \\
+\bottomrule
+\end{longtable}
+
+\section{Rutas HTTP principales}
+\begin{longtable}{@{}p{4.5cm}p{3.2cm}p{5.5cm}@{}}
+\toprule
+\textbf{Ruta} & \textbf{Nombre} & \textbf{Descripción} \\
+\midrule
+\endhead
+\texttt{GET /} & \texttt{siac.home} & Página de inicio \\
+\texttt{GET /pagina/\{slug\}} & \texttt{siac.page} & Contenido editorial e imágenes \\
+\texttt{GET /documentos} & \texttt{siac.documents.index} & Repositorio público \\
+\texttt{GET /documentos/archivo/\{id\}} & \texttt{siac.documents.download} & Descarga controlada \\
+\texttt{GET /buscar} & \texttt{siac.search} & Búsqueda global \\
+\texttt{GET/POST /login} & \texttt{login} & Acceso administrador \\
+\texttt{/admin/documentos} & \texttt{admin.documents.*} & CRUD (middleware \texttt{auth}) \\
+\bottomrule
+\end{longtable}
+
+\section{Componentes de aplicación}
+\begin{itemize}
+  \item \textbf{SiacContentRepository}: menú, páginas y contacto desde \texttt{storage/app/data/site\_content.json}.
+  \item \textbf{SiacIndicatorRepository}: matriz, filtros y resumen desde \texttt{indicators.json}.
+  \item \textbf{Document} (Eloquent): metadatos, etiquetas ACTÚA/componente, \texttt{downloadHref()}, filtros.
+  \item \textbf{Vistas Blade}: \texttt{resources/views/siac/*}, layout UNAL, estilos \texttt{public/css/siac.css}.
+\end{itemize}
+
+\section{Seguridad}
+\begin{itemize}
+  \item Área administrativa protegida con middleware \texttt{auth}.
+  \item Limitación de intentos de login (10 por minuto).
+  \item Descargas servidas por controlador (evita conflicto con carpeta física \texttt{public/documentos}).
+  \item Credenciales en \texttt{.env} (\texttt{SIAC\_ADMIN\_EMAIL}, \texttt{SIAC\_ADMIN\_PASSWORD}).
+\end{itemize}
