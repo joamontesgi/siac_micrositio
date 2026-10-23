@@ -1,0 +1,138 @@
+{
+  "pages": {
+    "siac-al-detalle": {
+      "title": "SIAC UNAL al detalle",
+      "breadcrumb": ["SIAC al detalle", "Panorama"],
+      "subtitle": "Sistema Integral de Aseguramiento de la Calidad — Estructura desglosada",
+      "intro": null,
+      "sections": [
+        {
+          "heading": "Definición estructural",
+          "body": "El SIAC no es solo un software o un manual, es una arquitectura institucional. Su objetivo central es consolidar una cultura de autorregulación. Esto significa que la universidad no espera a que entes externos (como el CNA) la evalúen para mejorar, sino que tiene su propio mecanismo interno, continuo y sistemático para identificar fallas y aplicar correcciones."
+        }
+      ],
+      "nav_cards": [
+        {"label": "Dimensiones", "slug": "dimensiones-siac", "hint": "¿Dónde se aplica?"},
+        {"label": "Componentes funcionales", "slug": "componentes-funcionales-siac", "hint": "Los 4 pilares"},
+        {"label": "Ciclo ACTÚA", "slug": "ciclo-actua", "hint": "Motor operativo"},
+        {"label": "Gobernanza", "slug": "gobernanza-siac-detalle", "hint": "Autoridad y niveles"}
+      ]
+    },
+    "dimensiones-siac": {
+      "title": "Dimensiones: ¿Dónde se aplica?",
+      "breadcrumb": ["SIAC al detalle", "Dimensiones"],
+      "intro": "El SIAC se despliega en tres dimensiones que cubren la experiencia universitaria, el quehacer misional y la administración institucional.",
+      "cards": [
+        {
+          "heading": "Vida universitaria",
+          "body": "Bienestar, convivencia, equidad, inclusión e infraestructura. Todo lo que rodea al estudiante y docente más allá del aula."
+        },
+        {
+          "heading": "Funciones misionales",
+          "body": "La razón de ser de la universidad: Formación (clases, currículo), Investigación (proyectos, laboratorios) y Extensión (impacto social)."
+        },
+        {
+          "heading": "Gobernanza y gestión",
+          "body": "Cómo se administra la universidad, cómo se toman las decisiones, transparencia institucional y manejo de recursos."
+        }
+      ]
+    },
+    "componentes-funcionales-siac": {
+      "title": "Los 4 componentes funcionales",
+      "breadcrumb": ["SIAC al detalle", "Componentes funcionales"],
+      "intro": "Los pilares del sistema que sostienen la operación del SIAC en la UNAL.",
+      "pillars": [
+        {
+          "number": 1,
+          "heading": "Evaluación institucional de la calidad",
+          "body": "Mecanismos para medir constantemente si se están cumpliendo los objetivos. Incluye autoevaluación de programas para registro calificado y acreditación."
+        },
+        {
+          "number": 2,
+          "heading": "Participación y diálogo",
+          "body": "Asegura que estudiantes, profesores, egresados y administrativos tengan voz activa. La calidad no se decide a puerta cerrada."
+        },
+        {
+          "number": 3,
+          "heading": "Gestión del conocimiento y la información",
+          "body": "Sistematización de datos. Si no hay datos (estadísticas de deserción, notas, encuestas), no se pueden tomar decisiones objetivas."
+        },
+        {
+          "number": 4,
+          "heading": "Gestión del cambio y planeación estratégica",
+          "body": "Articular los hallazgos de la evaluación con los planes de desarrollo y el presupuesto. La evaluación debe traducirse en acciones."
+        }
+      ]
+    },
+    "ciclo-actua": {
+      "title": "El motor operativo: el ciclo ACTÚA",
+      "breadcrumb": ["SIAC al detalle", "Ciclo ACTÚA"],
+      "intro": "Ciclo continuo que articula apreciación, aprendizaje, respuesta, ejecución y evaluación del cambio institucional.",
+      "actua": [
+        {
+          "letter": "A",
+          "name": "Apreciar la calidad",
+          "body": "Recolectar información, realizar autoevaluaciones y diagnósticos objetivos.",
+          "metaphor": "Mirarnos al espejo con honestidad y usar datos para saber exactamente cómo estamos."
+        },
+        {
+          "letter": "C",
+          "name": "Construir aprendizajes",
+          "body": "Análisis riguroso de los datos recolectados para identificar causas raíz y lecciones institucionales.",
+          "metaphor": "Entender por qué fallamos o por qué nos fue bien, sin buscar excusas."
+        },
+        {
+          "letter": "T",
+          "name": "Trazar respuestas",
+          "body": "Formulación de planes de mejoramiento, lineamientos y metas concretas.",
+          "metaphor": "Hacer el plan de trabajo. ¿Qué vamos a hacer para arreglar lo que está mal o mejorar lo bueno?"
+        },
+        {
+          "letter": "U",
+          "name": "Unir capacidades",
+          "body": "Ejecución articulada de los planes de mejoramiento, asignando recursos, talento humano y responsabilidades.",
+          "metaphor": "Poner el presupuesto y a las personas correctas a trabajar en el plan. Ejecutar en equipo."
+        },
+        {
+          "letter": "A",
+          "name": "Aprender del cambio",
+          "body": "Monitoreo y evaluación de los resultados obtenidos tras la ejecución de los planes de mejoramiento.",
+          "metaphor": "Revisar si el plan funcionó. Si sí, lo volvemos un estándar; si no, volvemos a empezar el ciclo."
+        }
+      ]
+    },
+    "gobernanza-siac-detalle": {
+      "title": "Gobernanza: estructura de autoridad",
+      "breadcrumb": ["SIAC al detalle", "Gobernanza"],
+      "intro": "La responsabilidad del SIAC no recae en una sola oficina; se articula en varios niveles institucionales con instancias de dirección y coordinación técnica.",
+      "sections": [
+        {
+          "heading": "Despliegue multinivel",
+          "body": "La responsabilidad se divide en: nivel nacional, nivel de sede (por ejemplo Sede Bogotá, Medellín), nivel de facultad y nivel de programa curricular."
+        },
+        {
+          "heading": "Comité Nacional del SIAC",
+          "body": "Es la máxima instancia de coordinación estratégica. Define el rumbo del sistema."
+        },
+        {
+          "heading": "Dirección Nacional de Aseguramiento de la Calidad",
+          "body": "Brazo ejecutor, encargado de la coordinación técnica, metodológica y operativa del sistema en toda la Universidad. Opera y promueve el ciclo ACTÚA en los distintos niveles."
+        }
+      ]
+    }
+  },
+  "menu": {
+    "label": "SIAC al detalle",
+    "children": [
+      {"label": "Panorama", "slug": "siac-al-detalle"},
+      {"label": "Dimensiones", "slug": "dimensiones-siac"},
+      {"label": "Componentes funcionales", "slug": "componentes-funcionales-siac"},
+      {"label": "Ciclo ACTÚA", "slug": "ciclo-actua"},
+      {"label": "Gobernanza", "slug": "gobernanza-siac-detalle"}
+    ]
+  },
+  "quick_links": [
+    {"label": "SIAC al detalle", "slug": "siac-al-detalle"},
+    {"label": "Ciclo ACTÚA", "slug": "ciclo-actua"}
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "source_pdf": "public/fuentes-siac/SIAC_Reunion_6_octubre_Simulacro_V2.pdf",
+  "slide_count": 14,
+  "slides": [
+    {
+      "number": 1,
+      "file": "images/simulacro/slide-01.png",
+      "title": "Contenido",
+      "pages": [
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 2,
+      "file": "images/simulacro/slide-02.png",
+      "title": "¿ Por qué es importante el SIAC ?",
+      "pages": [
+        "importancia-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 3,
+      "file": "images/simulacro/slide-03.png",
+      "title": "Concepto de calidad",
+      "pages": [
+        "concepto-calidad",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 4,
+      "file": "images/simulacro/slide-04.png",
+      "title": "Modelo de calidad",
+      "pages": [
+        "modelo-calidad",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 5,
+      "file": "images/simulacro/slide-05.png",
+      "title": "1. ¿ Qué es el SIAC ?",
+      "pages": [
+        "que-es-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 6,
+      "file": "images/simulacro/slide-06.png",
+      "title": "Acuerdo normativo SIAC – UNAL “Propuesta ”",
+      "pages": [
+        "acuerdo-normativo-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 7,
+      "file": "images/simulacro/slide-07.png",
+      "title": "Diapositiva",
+      "pages": [
+        "acuerdo-normativo-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 8,
+      "file": "images/simulacro/slide-08.png",
+      "title": "Diapositiva",
+      "pages": [
+        "acuerdo-normativo-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 9,
+      "file": "images/simulacro/slide-09.png",
+      "title": "Gestión del conocimiento y de la información",
+      "pages": [
+        "arquitectura-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 10,
+      "file": "images/simulacro/slide-10.png",
+      "title": "Participación y diálogo institucional",
+      "pages": [
+        "arquitectura-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 11,
+      "file": "images/simulacro/slide-11.png",
+      "title": "2024–II | 2025-I",
+      "pages": [
+        "arquitectura-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 12,
+      "file": "images/simulacro/slide-12.png",
+      "title": "2024–II | 2025-I",
+      "pages": [
+        "arquitectura-siac",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 13,
+      "file": "images/simulacro/slide-13.png",
+      "title": "3. Retos para el cumplimiento en el BPUN",
+      "pages": [
+        "retos-bpun",
+        "presentacion-simulacro"
+      ]
+    },
+    {
+      "number": 14,
+      "file": "images/simulacro/slide-14.png",
+      "title": "Gracias",
+      "pages": [
+        "contacto",
+        "presentacion-simulacro"
+      ]
+    }
+  ]
+}
