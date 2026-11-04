@@ -1,0 +1,21 @@
+CREATE TABLE "documents" (
+	"id" serial PRIMARY KEY,
+	"title" varchar(255) NOT NULL UNIQUE,
+	"functional_component" varchar(64),
+	"actua_phase" varchar(64),
+	"description" text,
+	"document_type" varchar(64) NOT NULL,
+	"process" varchar(64),
+	"institutional_level" varchar(64),
+	"year" integer,
+	"dependency" varchar(255),
+	"topic" varchar(255),
+	"version" varchar(32),
+	"status" varchar(32) DEFAULT 'vigente' NOT NULL,
+	"url" varchar(255),
+	"file_path" varchar(255),
+	"original_filename" varchar(255),
+	"published_at" date,
+	"created_at" timestamp DEFAULT now(),
+	"updated_at" timestamp DEFAULT now()
+);

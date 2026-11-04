@@ -76,6 +76,15 @@
           </div>
         @endif
       @endforeach
+      <div class="btn-group menu_sedes">
+        <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sedes<span class="caret"></span></div>
+        <ul class="dropdown-menu" id="sedes">
+          <li><a class="dropdown-item" href="https://bogota.unal.edu.co" target="_blank">Bogotá</a><span class="caret-right"></span></li>
+          <li><a class="dropdown-item" href="https://medellin.unal.edu.co" target="_blank">Medellín</a><span class="caret-right"></span></li>
+          <li><a class="dropdown-item" href="https://manizales.unal.edu.co" target="_blank">Manizales</a><span class="caret-right"></span></li>
+          <li><a class="dropdown-item" href="https://palmira.unal.edu.co" target="_blank">Palmira</a><span class="caret-right"></span></li>
+        </ul>
+      </div>
     </div>
   </div>
 

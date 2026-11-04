@@ -53,11 +53,13 @@ class SiacStaticSiteTest extends TestCase
         foreach ($pages as $html) {
             $this->assertStringContainsString('<html lang="es">', $html);
             $this->assertStringNotContainsString(SiacStaticSite::ORIGIN, $html);
+            $this->assertStringNotContainsString('data-account-link', $html);
             $this->assertStringNotContainsString('href="/admin', $html);
         }
         $this->assertStringContainsString('href="/fuentes-siac/', $pages['index.html']);
         $this->assertStringContainsString('I-01', $pages['pagina/matriz-indicadores/index.html']);
         $this->assertStringContainsString('/js/siac-search.js', $pages['buscar/index.html']);
+        $this->assertStringContainsString('/js/siac-documents.js', $pages['documentos/index.html']);
         $this->assertStringContainsString('id="siac-auth"', $pages['login/index.html']);
         $this->assertStringContainsString('/js/siac-auth.js', $pages['index.html']);
         $this->assertStringNotContainsString('action="/login', $pages['login/index.html']);

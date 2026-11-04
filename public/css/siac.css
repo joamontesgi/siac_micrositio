@@ -1542,4 +1542,9 @@ body.siac-page-home > main.detalle {
 .siac-account-panel input:focus-visible, .siac-account-panel button:focus-visible { outline: 3px solid #596627; outline-offset: 3px; }
 #auth-status:empty { display: none; }
 #auth-status[data-error="true"] { color: #9b2424; }
+.siac-upload { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #deded4; }
+.siac-upload h2 { font-size: 1.35rem; margin-top: 0; }
+.siac-upload-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.siac-upload select:focus-visible, .siac-upload textarea:focus-visible { outline: 3px solid #596627; outline-offset: 3px; }
+#upload-status[data-error="true"], #auth-status[data-error="true"] { color: #a12622; }
 @media (max-width: 767px) { .siac-account { grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem auto 3rem; } .siac-account-panel { padding: 1.5rem; } }

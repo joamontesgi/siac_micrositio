@@ -10,7 +10,8 @@
       <h1>Documentos</h1>
       <p class="lead">Fuentes de referencia del micrositio SIAC.</p>
     </header>
-    <ul class="siac-home-doc-list">
+    <p class="siac-doc-source" data-siac-doc-status role="status" aria-live="polite"></p>
+    <ul class="siac-home-doc-list" data-siac-documents>
       @foreach ($documents as $document)
         <li class="siac-home-doc-item">
           <div class="siac-home-doc-body">
@@ -23,3 +24,6 @@
     </ul>
   </article>
 @endsection
+@push('scripts')
+  <script src="{{ asset('js/siac-documents.js') }}" defer></script>
+@endpush
