@@ -1,0 +1,11 @@
+[build]
+  command = "bash scripts/netlify-static.sh"
+  publish = "dist"
+
+[build.environment]
+  PHP_VERSION = "8.3"
+  PYTHON_VERSION = "3.13"
+  APP_ENV = "production"
+  APP_DEBUG = "false"
+  SESSION_DRIVER = "array"
+  CACHE_DRIVER = "array"
