@@ -18,6 +18,7 @@ export const documents = pgTable("documents", {
   url: varchar({ length: 255 }),
   filePath: varchar("file_path", { length: 255 }),
   originalFilename: varchar("original_filename", { length: 255 }),
+  uploadedBy: varchar("uploaded_by", { length: 255 }),
   publishedAt: date("published_at"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),

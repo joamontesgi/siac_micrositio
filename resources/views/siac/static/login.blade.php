@@ -36,6 +36,45 @@
       <p>Sesión iniciada como <strong id="auth-user"></strong>.</p>
       <a href="/" class="btn btn-primary">Ir al micrositio</a>
       <button type="button" class="btn btn-default" id="auth-logout">Cerrar sesión</button>
+      <form id="upload-form" class="siac-upload" enctype="multipart/form-data" aria-labelledby="upload-title">
+        <h2 id="upload-title">Subir documento</h2>
+        <p class="text-muted">El documento queda publicado en <a href="/documentos">Documentos</a>. Tamaño máximo: 4 MB.</p>
+        <div class="form-group">
+          <label for="upload-file">Archivo <span aria-hidden="true">*</span></label>
+          <input class="form-control" id="upload-file" name="file" type="file" required
+                 accept=".pdf,.xlsx,.xls,.docx,.doc,.pptx,.ppt,.csv,.txt,.png,.jpg,.jpeg">
+        </div>
+        <div class="form-group">
+          <label for="upload-title-input">Nombre del documento <span aria-hidden="true">*</span></label>
+          <input class="form-control" id="upload-title-input" name="title" type="text" required maxlength="255">
+        </div>
+        <div class="form-group">
+          <label for="upload-description">Descripción</label>
+          <textarea class="form-control" id="upload-description" name="description" rows="3" maxlength="2000"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="upload-type">Tipo de documento</label>
+          <select class="form-control" id="upload-type" name="documentType">
+            <option value="documento">Documento</option>
+            <option value="informe_pdf">Informe</option>
+            <option value="presentacion_pdf">Presentación</option>
+            <option value="matriz_excel">Matriz o tabla de datos</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="siac-upload-row">
+          <div class="form-group">
+            <label for="upload-year">Año</label>
+            <input class="form-control" id="upload-year" name="year" type="number" min="1900" max="2100" step="1">
+          </div>
+          <div class="form-group">
+            <label for="upload-version">Versión</label>
+            <input class="form-control" id="upload-version" name="version" type="text" maxlength="32">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="upload-submit">Subir documento</button>
+        <p id="upload-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 </section>
