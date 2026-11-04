@@ -1,4 +1,4 @@
-import { login, signup, logout, getUser, getSettings, handleAuthCallback, requestPasswordRecovery, updateUser, acceptInvite, onAuthChange } from '@netlify/identity';
+import { login, signup, logout, getUser, getSettings, handleAuthCallback, requestPasswordRecovery, updateUser, acceptInvite, onAuthChange, refreshSession } from '@netlify/identity';
 
 const root = document.querySelector('#siac-auth');
 const callbackKeys = ['confirmation_token', 'recovery_token', 'invite_token', 'access_token', 'email_change_token', 'error', 'error_description'];
@@ -137,11 +137,54 @@ async function start() {
             form.removeAttribute('aria-busy');
         }
     });
+    setupUpload();
     document.querySelector('#auth-logout').addEventListener('click', async event => {
         const button = event.currentTarget;
         button.disabled = true;
         try { await logout(); showSession(null); message('Has cerrado sesión.'); }
         catch { showSession(await getUser()); message('No se pudo completar el cierre de sesión. Inténtalo de nuevo.', true); }
         finally { button.disabled = false; }
+    });
+}
+
+function setupUpload() {
+    const form = document.querySelector('#upload-form');
+    if (!form) return;
+    const status = document.querySelector('#upload-status');
+    const submit = document.querySelector('#upload-submit');
+    const fileInput = document.querySelector('#upload-file');
+    const titleInput = document.querySelector('#upload-title-input');
+    const say = (text, error = false) => { status.textContent = text; status.dataset.error = String(error); };
+    fileInput.addEventListener('change', () => {
+        const file = fileInput.files[0];
+        if (file && !titleInput.value.trim()) titleInput.value = file.name.replace(/\.[^.]+$/, '');
+    });
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        const file = fileInput.files[0];
+        if (file && file.size > 4 * 1024 * 1024) { say('El archivo supera el tamaño máximo de 4 MB.', true); return; }
+        submit.disabled = true;
+        form.setAttribute('aria-busy', 'true');
+        say('Subiendo documento…');
+        try {
+            // Keep the nf_jwt cookie (used by the function to authenticate the request) fresh.
+            await refreshSession();
+            if (!(await getUser())) { say('Tu sesión venció. Vuelve a iniciar sesión.', true); return; }
+            const res = await fetch('/api/documentos/subir', { method: 'POST', body: new FormData(form), credentials: 'same-origin' });
+            const data = await res.json().catch(() => ({}));
+            if (!res.ok) { say(data.error || 'No se pudo subir el documento. Inténtalo de nuevo.', true); return; }
+            form.reset();
+            status.replaceChildren('Documento «' + data.title + '» publicado. ');
+            const link = document.createElement('a');
+            link.href = '/documentos';
+            link.textContent = 'Ver documentos';
+            status.append(link);
+            status.dataset.error = 'false';
+        } catch {
+            say('No se pudo subir el documento. Revisa tu conexión e inténtalo de nuevo.', true);
+        } finally {
+            submit.disabled = false;
+            form.removeAttribute('aria-busy');
+        }
     });
 }
