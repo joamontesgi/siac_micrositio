@@ -44,6 +44,7 @@
   <script src="{{ asset('unal/js/gsap-public/minified/ScrollTrigger.min.js') }}"></script>
   <script src="{{ asset('unal/js/simpleParallax.min.js') }}"></script>
   <script src="{{ asset('unal/js/scripts.js') }}"></script>
+  <script type="module" src="/js/siac-auth.js"></script>
   @stack('scripts')
 </body>
 </html>

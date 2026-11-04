@@ -49,16 +49,19 @@ class SiacStaticSiteTest extends TestCase
         // Any accidental database access fails: no database is configured for the export.
         config(['database.default' => 'not-configured']);
         $pages = iterator_to_array($this->site()->pages());
-        $this->assertCount(6, $pages);
+        $this->assertCount(7, $pages);
         foreach ($pages as $html) {
             $this->assertStringContainsString('<html lang="es">', $html);
             $this->assertStringNotContainsString(SiacStaticSite::ORIGIN, $html);
-            $this->assertStringNotContainsString('href="/login', $html);
+            $this->assertStringContainsString('href="/login', $html);
             $this->assertStringNotContainsString('href="/admin', $html);
         }
         $this->assertStringContainsString('href="/fuentes-siac/', $pages['index.html']);
         $this->assertStringContainsString('I-01', $pages['pagina/matriz-indicadores/index.html']);
         $this->assertStringContainsString('/js/siac-search.js', $pages['buscar/index.html']);
+        $this->assertStringContainsString('id="siac-auth"', $pages['login/index.html']);
+        $this->assertStringContainsString('/js/siac-auth.js', $pages['index.html']);
+        $this->assertStringNotContainsString('action="/login', $pages['login/index.html']);
         $this->assertStringContainsString('Página no encontrada', $pages['404.html']);
     }
 

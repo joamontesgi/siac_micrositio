@@ -5,3 +5,4 @@ python scripts/build_site_content.py
 python scripts/import_indicators_from_excel.py
 composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 php scripts/export_static.php
+npx --no-install esbuild resources/js/siac-auth.js --bundle --format=esm --platform=browser --outfile=dist/js/siac-auth.js

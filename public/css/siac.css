@@ -1468,3 +1468,16 @@ body.siac-page-home > main.detalle {
     justify-content: flex-start;
   }
 }
+
+/* Account access follows the institutional palette and typography. */
+.siac-account { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; max-width: 950px; margin: 3rem auto 5rem; }
+.siac-account-intro { border-top: 5px solid #94a53c; padding-top: 1.5rem; }
+.siac-account-label { text-transform: uppercase; letter-spacing: .1em; font-size: .85rem; color: #596627; }
+.siac-account-panel { padding: 2rem; background: #f6f6f1; border: 1px solid #deded4; border-radius: 4px; }
+.siac-account-panel [hidden] { display: none !important; }
+.siac-account-options { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: 1rem; }
+.siac-account-options .btn { padding-left: 0; margin-right: .75rem; white-space: normal; text-align: left; }
+.siac-account-panel input:focus-visible, .siac-account-panel button:focus-visible { outline: 3px solid #596627; outline-offset: 3px; }
+#auth-status:empty { display: none; }
+#auth-status[data-error="true"] { color: #9b2424; }
+@media (max-width: 767px) { .siac-account { grid-template-columns: 1fr; gap: 1.5rem; margin: 1.5rem auto 3rem; } .siac-account-panel { padding: 1.5rem; } }

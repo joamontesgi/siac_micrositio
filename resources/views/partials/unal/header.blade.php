@@ -76,6 +76,7 @@
           </div>
         @endif
       @endforeach
+      <div class="btn-group"><a href="/login" class="btn btn-default" data-account-link>Iniciar sesión</a></div>
       <div class="btn-group menu_sedes">
         <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sedes<span class="caret"></span></div>
         <ul class="dropdown-menu" id="sedes">
@@ -99,6 +100,7 @@
         <input type="search" name="q" class="form-control" placeholder="Buscar…" value="{{ request('q') }}" />
       </form>
       <ul class="navbar-nav px-3">
+        <li class="nav-item"><a class="nav-link" href="/login" data-account-link>Iniciar sesión</a></li>
         @foreach (config('siac.menu') as $item)
           @if (! empty($item['children']))
             <li class="nav-item"><strong class="nav-link">{{ $item['label'] }}</strong></li>

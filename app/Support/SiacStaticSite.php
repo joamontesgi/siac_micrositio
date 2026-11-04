@@ -94,6 +94,7 @@ class SiacStaticSite
             );
         }
         yield 'documentos/index.html' => $render('siac.static.documents', ['documents' => $this->documents()]);
+        yield 'login/index.html' => $render('siac.static.login');
         yield 'buscar/index.html' => $render('siac.static.search');
         yield '404.html' => $render('siac.static.not-found');
     }
