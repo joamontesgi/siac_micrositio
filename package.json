@@ -11,12 +11,16 @@
     },
     "devDependencies": {
         "axios": "^0.25",
+        "drizzle-kit": "^1.0.0-beta.22",
         "esbuild": "^0.28.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
     },
     "dependencies": {
-        "@netlify/identity": "^2.0.0"
+        "@netlify/database": "^2.0.1",
+        "@netlify/functions": "^6.0.3",
+        "@netlify/identity": "^2.0.0",
+        "drizzle-orm": "^1.0.0-beta.22"
     }
 }
