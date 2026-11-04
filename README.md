@@ -90,3 +90,11 @@ php artisan db:seed --class=SiacSeeder
 
 - Diapositivas del PDF sin texto extraíble (gráficos) no aportan contenido adicional al sitio.
 - Los cinco motivos de importancia del SIAC y textos ampliados de presentación se mantienen en `scripts/build_site_content.py` (complementan lo extraído del PDF del simulacro).
+
+## Publicación del micrositio público en Netlify
+
+Netlify publica una versión estática; PHP se utiliza únicamente durante el despliegue para renderizar las mismas plantillas del sitio Laravel. `netlify.toml` configura el comando de exportación y publica exclusivamente `dist/`, sin exponer el código PHP ni la configuración de la aplicación.
+
+Cada despliegue regenera el contenido y los indicadores desde las fuentes del repositorio. Incluye inicio, páginas informativas, matriz de indicadores con filtros, búsqueda en el navegador y descarga del PDF y Excel de referencia. Los cambios de contenido se publican mediante un nuevo despliegue.
+
+El inicio de sesión, la carga de archivos y la administración de documentos pertenecen a la aplicación Laravel y no se incluyen en esta publicación pública. No se necesita una base de datos para generar el sitio estático. Las direcciones desconocidas muestran una página 404 con enlaces al inicio y a la búsqueda.
