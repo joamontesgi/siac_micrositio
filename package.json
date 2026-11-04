@@ -11,8 +11,12 @@
     },
     "devDependencies": {
         "axios": "^0.25",
+        "esbuild": "^0.28.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "@netlify/identity": "^2.0.0"
     }
 }
