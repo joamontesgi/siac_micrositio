@@ -7,13 +7,17 @@
 @endsection
 
 @section('content')
+  <article class="siac-content siac-page">
+  <header class="siac-page-header">
+  <p class="siac-page-eyebrow">Repositorio</p>
   <h1>Documentos del SIAC</h1>
-  <p>
+  <p class="lead siac-page-lead">
     Repositorio por
     <a href="{{ route('siac.page', ['slug' => 'componentes-funcionales-siac']) }}">componentes funcionales</a>
     y por
     <a href="{{ route('siac.page', ['slug' => 'ciclo-actua']) }}">ciclo ACTÚA</a>.
   </p>
+  </header>
 
   @auth
     <p class="mb-3">
@@ -153,4 +157,5 @@
     <h2 class="h5">Resultados ({{ $documents->count() }})</h2>
     @include('siac.documents._list', ['items' => $documents])
   @endif
+  </article>
 @endsection

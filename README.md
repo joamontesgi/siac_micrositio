@@ -89,4 +89,4 @@ php artisan db:seed --class=SiacSeeder
 ## Notas
 
 - Diapositivas del PDF sin texto extraíble (gráficos) no aportan contenido adicional al sitio.
-- La diapositiva «¿Por qué es importante el SIAC?» no incluye texto en la fuente PDF; la página existe con el título únicamente.
+- Los cinco motivos de importancia del SIAC y textos ampliados de presentación se mantienen en `scripts/build_site_content.py` (complementan lo extraído del PDF del simulacro).

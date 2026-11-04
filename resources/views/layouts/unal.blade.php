@@ -25,21 +25,19 @@
   <title>@yield('title', config('siac.site_name')) — Universidad Nacional de Colombia</title>
   @stack('head')
 </head>
-<body class="@stack('body-class')">
+<body class="siac-site @stack('body-class')">
   @include('partials.unal.services')
   @include('partials.unal.header')
   @include('partials.unal.accessibility')
 
-  <div class="siac-layout">
-    <main class="detalle">
-      <div class="container-fluid">
-        @yield('breadcrumb')
-        @yield('content')
-      </div>
-    </main>
+  <main class="detalle">
+    <div class="container-fluid">
+      @yield('breadcrumb')
+      @yield('content')
+    </div>
+  </main>
 
-    @include('partials.unal.footer')
-  </div>
+  @include('partials.unal.footer')
 
   <script src="{{ asset('unal/js/gsap-public/minified/gsap.min.js') }}"></script>
   <script src="{{ asset('unal/js/gsap-public/minified/ScrollToPlugin.min.js') }}"></script>

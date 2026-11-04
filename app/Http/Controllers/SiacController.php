@@ -93,7 +93,8 @@ class SiacController extends Controller
                     $sectionsText .= ' '.($step['name'] ?? '').' '.($step['body'] ?? '').' '.($step['metaphor'] ?? '');
                 }
                 $haystack = mb_strtolower(
-                    ($page['title'] ?? '').' '.($page['subtitle'] ?? '').' '.($page['intro'] ?? '').' '.$sectionsText
+                    ($page['title'] ?? '').' '.($page['subtitle'] ?? '').' '.($page['intro'] ?? '')
+                    .' '.($page['search_index'] ?? '').' '.$sectionsText
                 );
                 if (str_contains($haystack, mb_strtolower($query))) {
                     $pageResults->push(['slug' => $slug, 'page' => $page]);

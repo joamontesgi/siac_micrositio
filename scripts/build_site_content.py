@@ -20,66 +20,32 @@ PDF = {
         "title": "¿Por qué es importante el SIAC?",
         "breadcrumb": ["Presentación SIAC", "¿Por qué es importante el SIAC?"],
         "intro": None,
+        "pillars": [],
         "sections": [],
     },
     "concepto-calidad": {
         "title": "Concepto de calidad",
         "breadcrumb": ["Presentación SIAC", "Concepto de calidad"],
-        "intro": (
-            "La calidad en la Universidad Nacional de Colombia se entiende como la "
-            "capacidad institucional, construida colectiva y participativamente, de "
-            "garantizar coherencia entre su identidad y mandato público como universidad "
-            "autónoma y pública de carácter nacional, la dignidad e inclusión de su "
-            "comunidad universitaria, el rigor y la pertinencia social de sus funciones "
-            "misionales de formación, investigación y extensión, y la solidez de la "
-            "gobernanza y la gestión institucional que las sostienen."
-        ),
-        "sections": [
-            {
-                "heading": None,
-                "body": (
-                    "Es un horizonte en permanente construcción, que se fortalece mediante la "
-                    "evaluación, el aprendizaje y el mejoramiento continuo, y cuyo propósito es "
-                    "cumplir la misión y el proyecto educativo de la Universidad, así como la "
-                    "responsabilidad que la sociedad colombiana le ha confiado."
-                ),
-            }
-        ],
+        "intro": None,
+        "sections": [],
     },
     "modelo-calidad": {
         "title": "Modelo de calidad",
         "breadcrumb": ["Presentación SIAC", "Modelo de calidad"],
-        "intro": "complementan y fortalecen mutuamente",
+        "intro": None,
         "sections": [],
     },
     "que-es-siac": {
         "title": "¿Qué es el SIAC – UNAL?",
         "breadcrumb": ["Presentación SIAC", "¿Qué es el SIAC – UNAL?"],
-        "intro": (
-            "El SIAC es un sistema institucional integrado que articula las capacidades, "
-            "actores, procesos, instancias e instrumentos de la Universidad para evaluar, "
-            "comprender, transformar y mejorar continuamente la calidad de sus funciones "
-            "misionales, la vida universitaria y la gobernanza y gestión institucional."
-        ),
-        "sections": [
-            {
-                "heading": None,
-                "body": (
-                    "Su arquitectura organiza y relaciona estos elementos para favorecer la "
-                    "autorregulación, el aprendizaje institucional, la toma de decisiones "
-                    "informadas y el mejoramiento continuo."
-                ),
-            }
-        ],
+        "intro": None,
+        "sections": [],
     },
     "acuerdo-normativo-siac": {
         "title": "Acuerdo normativo SIAC",
         "breadcrumb": ["Presentación SIAC", "Acuerdo normativo SIAC"],
-        "intro": "2024–II | 2025-I",
-        "sections": [
-            {"heading": "Acuerdo normativo SIAC – UNAL «Propuesta»", "body": None},
-            {"heading": "Política de calidad", "body": None},
-        ],
+        "intro": None,
+        "sections": [],
     },
     "arquitectura-siac": {
         "title": "Arquitectura del SIAC",
@@ -90,10 +56,8 @@ PDF = {
     "retos-bpun": {
         "title": "Retos para el cumplimiento en el BPUN",
         "breadcrumb": ["Presentación SIAC", "Retos para el cumplimiento en el BPUN"],
-        "intro": "2024–II | 2025-I",
-        "sections": [
-            {"heading": "3. Retos para el cumplimiento en el BPUN", "body": None},
-        ],
+        "intro": None,
+        "sections": [],
     },
     "contacto": {
         "title": "Contacto",
@@ -102,6 +66,157 @@ PDF = {
         "sections": [],
     },
 }
+
+HOME_LEAD = (
+    "Sistema institucional de la UNAL para evaluar, comprender y mejorar de forma continua "
+    "la calidad misional, la vida universitaria y la gobernanza."
+)
+
+# Texto íntegro de diapositivas (solo indexación en búsqueda; no se muestra junto a la imagen).
+SLIDE_SEARCH_INDEX: dict[str, str] = {
+    "importancia-siac": (
+        "cumplimiento normativo transparencia decisiones evidencias mejoramiento continuo "
+        "sostenibilidad acreditación cultura calidad comunidad universitaria"
+    ),
+    "concepto-calidad": (
+        "La calidad en la Universidad Nacional de Colombia se entiende como la capacidad "
+        "institucional, construida colectiva y participativamente, de garantizar coherencia "
+        "entre su identidad y mandato público como universidad autónoma y pública de carácter "
+        "nacional, la dignidad e inclusión de su comunidad universitaria, el rigor y la "
+        "pertinencia social de sus funciones misionales de formación, investigación y extensión, "
+        "y la solidez de la gobernanza y la gestión institucional que las sostienen. "
+        "Es un horizonte en permanente construcción, evaluación, aprendizaje y mejoramiento continuo."
+    ),
+    "modelo-calidad": "modelo de calidad complementan fortalecen mutuamente indicadores procesos",
+    "que-es-siac": (
+        "SIAC sistema institucional integrado capacidades actores procesos instancias instrumentos "
+        "autorregulación aprendizaje institucional políticas marco evaluación mejoramiento continuo"
+    ),
+    "acuerdo-normativo-siac": (
+        "acuerdo normativo política de calidad objeto principios rectores componentes estratégicos "
+        "funcionales gobernanza Comité Nacional SIAC nodos autoevaluación"
+    ),
+    "arquitectura-siac": (
+        "evaluación institucional de la calidad metaevaluación articulación componentes estratégicos "
+        "funcionales ACTUA acreditación institucional"
+    ),
+    "retos-bpun": "retos cumplimiento BPUN plan de desarrollo institucional",
+}
+
+SLIDE_COMPANIONS: dict[str, dict] = {
+    "importancia-siac": {
+        "intro": (
+            "Material del simulacro institucional (octubre 2026). La diapositiva recoge los "
+            "argumentos estratégicos para sostener el SIAC; aquí encontrará contexto y rutas "
+            "para profundizar sin repetir el contenido gráfico."
+        ),
+        "related_links": [
+            {"label": "¿Qué es el SIAC?", "slug": "que-es-siac"},
+            {"label": "Arquitectura", "slug": "arquitectura-siac"},
+            {"label": "SIAC al detalle", "slug": "siac-al-detalle"},
+        ],
+    },
+    "concepto-calidad": {
+        "intro": (
+            "Esta sección ancla el significado de «calidad» en la UNAL. El enunciado completo "
+            "figura en la diapositiva oficial; para dimensiones misionales, ciclo operativo y "
+            "gobernanza, use los enlaces relacionados."
+        ),
+        "related_links": [
+            {"label": "Dimensiones del SIAC", "slug": "dimensiones-siac"},
+            {"label": "Ciclo ACTÚA", "slug": "ciclo-actua"},
+            {"label": "Modelo de calidad", "slug": "modelo-calidad"},
+        ],
+    },
+    "modelo-calidad": {
+        "intro": (
+            "Presentación del modelo que articula conceptos, procesos e indicadores. Consulte "
+            "componentes funcionales y matriz de indicadores para ver cómo se traduce en la práctica."
+        ),
+        "related_links": [
+            {"label": "Componentes funcionales", "slug": "componentes-funcionales-siac"},
+            {"label": "Matriz de indicadores", "slug": "matriz-indicadores"},
+            {"label": "Concepto de calidad", "slug": "concepto-calidad"},
+        ],
+    },
+    "que-es-siac": {
+        "intro": (
+            "Vista introductoria del SIAC como arquitectura institucional. La diapositiva resume "
+            "capacidades, actores e instrumentos; el desglose operativo está en «SIAC al detalle»."
+        ),
+        "related_links": [
+            {"label": "SIAC al detalle", "slug": "siac-al-detalle"},
+            {"label": "Gobernanza", "slug": "gobernanza-siac-detalle"},
+            {"label": "Acuerdo normativo", "slug": "acuerdo-normativo-siac"},
+        ],
+    },
+    "acuerdo-normativo-siac": {
+        "intro": (
+            "Tres diapositivas de la propuesta de acuerdo y política de calidad (objeto, principios, "
+            "componentes e instancias). Para roles por nivel y coordinación, consulte gobernanza y "
+            "documentos fuente."
+        ),
+        "related_links": [
+            {"label": "Gobernanza del SIAC", "slug": "gobernanza-siac-detalle"},
+            {"label": "Arquitectura", "slug": "arquitectura-siac"},
+            {"label": "Fuentes y PDFs", "slug": "__documents__"},
+        ],
+    },
+    "arquitectura-siac": {
+        "intro": (
+            "Conjunto de diagramas del simulacro sobre evaluación institucional y articulación de "
+            "componentes. Use ACTÚA y componentes funcionales para el recorrido operativo en el micrositio."
+        ),
+        "related_links": [
+            {"label": "Componentes funcionales", "slug": "componentes-funcionales-siac"},
+            {"label": "Ciclo ACTÚA", "slug": "ciclo-actua"},
+            {"label": "Dimensiones", "slug": "dimensiones-siac"},
+        ],
+    },
+    "retos-bpun": {
+        "intro": (
+            "Diapositiva de retos de implementación frente al Plan de desarrollo institucional. "
+            "Cruce con indicadores estratégicos y supuestos de la matriz UNAL."
+        ),
+        "related_links": [
+            {"label": "Indicadores", "slug": "matriz-indicadores"},
+            {"label": "Leyenda y supuestos", "slug": "leyenda-matriz"},
+            {"label": "Presentación completa", "slug": "presentacion-simulacro"},
+        ],
+    },
+}
+
+
+def page_search_blob(page: dict) -> str:
+    parts = [
+        page.get("title") or "",
+        page.get("subtitle") or "",
+        page.get("intro") or "",
+    ]
+    for section in page.get("sections") or []:
+        parts.append(section.get("heading") or "")
+        parts.append(section.get("body") or "")
+        if section.get("list"):
+            parts.extend(section["list"])
+    for pillar in page.get("pillars") or []:
+        parts.append(pillar.get("heading") or "")
+        parts.append(pillar.get("body") or "")
+    return " ".join(p for p in parts if p)
+
+
+def apply_slide_companions(pages: dict) -> None:
+    for slug, companion in SLIDE_COMPANIONS.items():
+        page = pages.get(slug)
+        if not page or not page.get("images"):
+            continue
+        page["search_index"] = (
+            page_search_blob(page) + " " + SLIDE_SEARCH_INDEX.get(slug, "")
+        ).strip()
+        page["intro"] = companion["intro"]
+        page["sections"] = []
+        page["pillars"] = []
+        page["related_links"] = companion.get("related_links", [])
+        page["display_mode"] = "slide_companion"
 
 
 def leyenda_sections() -> list[dict]:
@@ -205,6 +320,7 @@ def main() -> None:
     }
 
     attach_simulacro_images(pages)
+    apply_slide_companions(pages)
 
     menu = [
         {"label": "Inicio", "route": "siac.home"},
@@ -274,7 +390,7 @@ def main() -> None:
             "excel": XLSX.name,
         },
         "contact_email": "siac_nal@unal.edu.co",
-        "home_lead": pages["que-es-siac"]["intro"],
+        "home_lead": HOME_LEAD,
         "menu": menu,
         "quick_links": quick_links,
         "pages": pages,

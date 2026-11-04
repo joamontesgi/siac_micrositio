@@ -1,6 +1,8 @@
-/* Paleta SIAC — solo área de contenido (main), no cabecera/pie UNAL */
+/* Paleta SIAC — contenido sobre fondo azul; cabecera/pie UNAL sin teñir */
+body.siac-site,
 main.detalle {
   --siac-navy: #232a5e;
+  --siac-navy-deep: #1a2048;
   --siac-navy-card: #232a5e;
   --siac-teal: #00b8a9;
   --siac-teal-hover: #00a396;
@@ -9,6 +11,131 @@ main.detalle {
   --siac-text: #ffffff;
   --siac-text-soft: #dce2ff;
   --siac-border: rgba(255, 255, 255, 0.12);
+}
+
+/* Fondo azul en todo el micrositio; header/footer UNAL en claro */
+body.siac-site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(
+    180deg,
+    var(--siac-navy) 0%,
+    var(--siac-navy-deep) 38%,
+    var(--siac-navy-deep) 100%
+  );
+  color: var(--siac-text);
+}
+
+body.siac-site > #unalTop {
+  flex: 0 0 auto;
+  order: 1;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  position: relative;
+  z-index: 200;
+  width: 100%;
+}
+
+body.siac-site > .tx-unal-accesibilidad {
+  flex: 0 0 auto;
+  order: 2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 103px;
+  z-index: 150;
+  width: 100%;
+  height: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+body.siac-site > .tx-unal-accesibilidad #pestania-accesibilidad,
+body.siac-site > .tx-unal-accesibilidad #panel-accesibilidad {
+  pointer-events: auto;
+}
+
+body.siac-site > main.detalle {
+  flex: 1 0 auto;
+  order: 3;
+}
+
+body.siac-site > footer.siac-site-footer {
+  flex: 0 0 auto;
+  order: 4;
+  width: 100%;
+}
+
+body.siac-site #services {
+  position: fixed;
+  z-index: 201;
+}
+
+body.siac-site #unalTop .navigation .site-url,
+body.siac-site #unalTop .navigation .site-url a {
+  color: #fff;
+}
+
+body.siac-site #unalTop .main_menu .site-url a {
+  color: #fff;
+}
+
+/* Cabecera UNAL: contraste en menú principal y desplegables (no heredar estilos del área azul) */
+body.siac-site #unalTop .navigation .mainMenu .btn,
+body.siac-site #unalTop .navigation .mainMenu .btn-default {
+  color: #fff !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+body.siac-site #unalTop .dropdown-menu {
+  background-color: #2b2b2b !important;
+  border: 1px solid #1a1a1a !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  padding: 0.25rem 0 !important;
+  min-width: 14rem;
+  z-index: 250;
+}
+
+body.siac-site #unalTop .dropdown-menu .dropdown-item,
+body.siac-site #unalTop .dropdown-menu a.dropdown-item,
+body.siac-site #unalTop .dropdown-menu li a {
+  color: #fff !important;
+  background-color: transparent !important;
+  font-size: 0.92rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem !important;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+body.siac-site #unalTop .dropdown-menu .dropdown-item:hover,
+body.siac-site #unalTop .dropdown-menu .dropdown-item:focus,
+body.siac-site #unalTop .dropdown-menu li a:hover,
+body.siac-site #unalTop .dropdown-menu li a:focus {
+  background-color: #4a4a4a !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+body.siac-site #unalTop .dropdown-menu .dropdown-item.active,
+body.siac-site #unalTop .dropdown-menu .dropdown-item:active {
+  background-color: var(--siac-teal) !important;
+  color: #fff !important;
+}
+
+body.siac-site #unalTop .firstMenu a,
+body.siac-site #unalTop .firstMenu .nav-item a {
+  color: #fff !important;
+}
+
+body.siac-site #unalTop .main_menu .navbar-nav .nav-link,
+body.siac-site #unalTop .main_menu .navbar-nav a {
+  color: #fff !important;
+}
+
+body.siac-site #unalTop .main_menu .navbar-nav strong.nav-link {
+  color: var(--siac-gold) !important;
 }
 
 .siac-hero {
@@ -306,28 +433,19 @@ main.detalle input[type="search"].siac-doc-input::-webkit-search-cancel-button {
   color: var(--siac-muted);
 }
 
-.siac-layout {
+/* Main: ancho contenido; min-height de unal.css no debe empujar el footer al centro */
+body.siac-site > main.detalle {
   display: block;
-  flex: 1 0 auto;
-  width: 100%;
-}
-
-/* Anula unal.css (main { flex: 1 0 auto; min-height: 30em }) que deja el footer en medio del contenido */
-body .siac-layout > main.detalle {
-  display: block;
-  flex: none !important;
-  flex-grow: 0 !important;
-  flex-shrink: 0 !important;
-  flex-basis: auto !important;
-  min-height: auto !important;
-  height: auto !important;
-  max-height: none !important;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 2rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 2rem !important;
   padding: 0 15px;
   box-sizing: border-box;
   overflow: visible;
+  min-height: 0 !important;
+  flex: 1 0 auto !important;
 }
 
 main.detalle {
@@ -337,6 +455,8 @@ main.detalle {
   padding: 0 15px;
   box-sizing: border-box;
   overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
 main.detalle::after {
@@ -349,37 +469,35 @@ main.detalle .container-fluid {
   max-width: 1140px;
   margin: 0 auto;
   padding: 1.25rem 1.25rem 2rem;
-  background: var(--siac-navy);
+  background: transparent;
   color: var(--siac-text);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
-/* Footer institucional: al final del contenido, sin superponer main */
-body .siac-layout > footer.siac-site-footer {
+/* Footer institucional: contraste con la franja azul del contenido */
+body.siac-site > footer.siac-site-footer {
   display: block;
   position: static !important;
   width: 100%;
   max-width: none;
   margin: 0;
   clear: both;
-  background: #666 !important;
-  color: #ddd;
+  background: #52565e !important;
+  color: #e8e8ec;
+  border-top: 4px solid var(--siac-teal);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.2);
 }
 
-.siac-layout > footer.siac-site-footer a {
+body.siac-site > footer.siac-site-footer a {
   color: #fff !important;
 }
 
-.siac-layout > footer.siac-site-footer a:hover {
+body.siac-site > footer.siac-site-footer a:hover {
   color: #eee !important;
 }
 
-.siac-layout > footer.siac-site-footer div.footer-info p {
+body.siac-site > footer.siac-site-footer div.footer-info p {
   color: #ddd;
-}
-
-.siac-page-home .siac-layout > footer.siac-site-footer {
-  border-top: 4px solid var(--siac-teal, #00b8a9);
 }
 
 main.detalle h1 {
@@ -416,6 +534,15 @@ main.detalle .text-muted.small {
 main.detalle .text-primary,
 main.detalle .card-title.text-primary {
   color: var(--siac-teal) !important;
+}
+
+main.detalle .breadcrumb-class {
+  margin-bottom: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.88rem;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  border: 1px solid var(--siac-border);
 }
 
 main.detalle .breadcrumb-class a {
@@ -590,19 +717,228 @@ main.detalle .lead {
 
 .siac-content {
   color: var(--siac-text);
+  max-width: 72rem;
 }
 
 .siac-content p,
 .siac-content li {
   color: var(--siac-text-soft);
+  line-height: 1.65;
 }
 
 .siac-content ul {
   padding-left: 1.25rem;
 }
 
+.siac-page {
+  padding-bottom: 0.5rem;
+}
+
+.siac-page-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--siac-border);
+}
+
+.siac-page-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--siac-teal);
+}
+
+.siac-page-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.65rem, 2.5vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.siac-page-subtitle,
+.siac-page-lead {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.siac-page-lead {
+  font-size: 1.05rem;
+}
+
+.siac-page-split {
+  align-items: flex-start;
+}
+
+.siac-page-prose > :first-child {
+  margin-top: 0;
+}
+
+.siac-page-slides {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 992px) {
+  .siac-page-slides {
+    position: sticky;
+    top: 1.25rem;
+  }
+}
+
+.siac-slide-companion {
+  padding: 1.25rem 1.35rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--siac-border);
+  border-left: 3px solid var(--siac-teal);
+  border-radius: 8px;
+}
+
+.siac-slide-companion-lead {
+  margin: 0 0 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--siac-text) !important;
+}
+
+.siac-related-links-label {
+  margin: 0 0 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--siac-muted);
+}
+
+.siac-related-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.siac-related-links-list a {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 184, 169, 0.45);
+  background: rgba(0, 184, 169, 0.08);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.siac-related-links-list a:hover {
+  background: rgba(0, 184, 169, 0.18);
+  border-color: var(--siac-teal);
+}
+
+.siac-slide-panel {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--siac-border);
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.siac-slide-panel-label {
+  margin: 0 0 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--siac-muted);
+}
+
+.siac-slide-panel-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.8rem;
+  color: var(--siac-muted);
+  text-align: center;
+}
+
 .siac-slide-figures {
   margin: 1.25rem 0 1.75rem;
+}
+
+.siac-page-slides .siac-slide-figures {
+  margin: 0;
+}
+
+.siac-pillar-card,
+.siac-topic-card,
+.siac-nav-card {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.siac-nav-card:hover,
+.siac-topic-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 184, 169, 0.55) !important;
+}
+
+.siac-gallery-section {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--siac-border);
+}
+
+.siac-search-form {
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.35rem;
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--siac-border);
+  border-radius: 8px;
+  max-width: 36rem;
+}
+
+.siac-search-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--siac-text-soft);
+}
+
+.siac-search-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.siac-search-form-row .form-control {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.siac-search-results {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.siac-search-results li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--siac-border);
+}
+
+.siac-search-results li:last-child {
+  border-bottom: none;
+}
+
+.siac-search-doc-title {
+  font-weight: 600;
+  color: var(--siac-text);
+}
+
+.siac-search-doc-action {
+  font-size: 0.88rem;
 }
 
 .siac-slide-gallery {
@@ -619,11 +955,15 @@ main.detalle .lead {
 }
 
 .siac-slide-figure {
-  margin: 0 0 1.25rem;
-  padding: 0.65rem;
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid var(--siac-border);
-  border-radius: 10px;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.siac-slide-panel .siac-slide-figure:last-child {
+  margin-bottom: 0;
 }
 
 .siac-slide-figure-gallery {
@@ -807,7 +1147,7 @@ main.detalle .nav-tabs .nav-link.active {
   border-radius: 0;
 }
 
-.siac-page-home .siac-layout > main.detalle {
+body.siac-page-home > main.detalle {
   margin-bottom: 1.5rem !important;
 }
 

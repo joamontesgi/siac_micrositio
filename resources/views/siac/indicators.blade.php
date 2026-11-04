@@ -22,11 +22,14 @@
 @endphp
 
 @section('content')
-  <article class="siac-content" id="siac-indicators-explorer">
-    <h1>{{ $page['title'] }}</h1>
-    @if (! empty($page['intro']))
-      <p class="lead">{{ $page['intro'] }}</p>
-    @endif
+  <article class="siac-content siac-page" id="siac-indicators-explorer">
+    <header class="siac-page-header">
+      <p class="siac-page-eyebrow">Matriz de indicadores</p>
+      <h1>{{ $page['title'] }}</h1>
+      @if (! empty($page['intro']))
+        <p class="lead siac-page-lead">{{ $page['intro'] }}</p>
+      @endif
+    </header>
 
     <p class="siac-source-note mb-3">
       Datos de <strong>{{ $indicatorSource }}</strong>.
