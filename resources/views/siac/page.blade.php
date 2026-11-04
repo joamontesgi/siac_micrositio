@@ -2,14 +2,32 @@
 
 @section('title', $page['title'] . ' — SIAC')
 
+@if ($slug === 'concepto-calidad')
+  @push('head')
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/siac-validacion-concepto.css') }}?v={{ filemtime(public_path('css/siac-validacion-concepto.css')) }}">
+  @endpush
+  @push('scripts')
+    <script src="{{ asset('js/siac-validacion-concepto.js') }}?v={{ filemtime(public_path('js/siac-validacion-concepto.js')) }}" defer></script>
+  @endpush
+@endif
+
 @section('breadcrumb')
     @include('partials.siac.breadcrumb', ['crumbs' => $page['breadcrumb'] ?? [$page['title']]])
 @endsection
 
 @section('content')
     @php
-        $siacSideSlides = !empty($page['images']);
+        $siacImageCount = count($page['images'] ?? []);
         $siacSlideCompanion = ($page['display_mode'] ?? '') === 'slide_companion';
+        $siacImagesLayout = $page['images_layout'] ?? ($slug === 'arquitectura-siac' ? 'architecture' : null);
+        if ($siacImageCount > 1 && $siacImagesLayout === null) {
+            $siacImagesLayout = 'grid';
+        }
+        $siacSlideGalleryBelow = $siacSlideCompanion && $siacImageCount > 1;
+        $siacSideSlides = $siacImageCount === 1;
     @endphp
 
     <article class="siac-content siac-page">
@@ -33,6 +51,7 @@
             <div @class([
                 'siac-page-prose' => $siacSideSlides,
                 'col-lg-6' => $siacSideSlides,
+                'col-12' => $siacSlideGalleryBelow,
             ])>
                 @if ($siacSlideCompanion)
                     <div class="siac-slide-companion">
@@ -175,10 +194,21 @@
                     @include('partials.siac.slide-figures', [
                         'images' => $page['images'],
                         'pageTitle' => $page['title'],
+                        'layout' => $siacImagesLayout,
                     ])
                 </aside>
             @endif
         </div>
+
+        @if ($siacSlideGalleryBelow)
+            <section class="siac-gallery-section siac-gallery-section--companion" aria-label="Material gráfico de la presentación">
+                @include('partials.siac.slide-figures', [
+                    'images' => $page['images'],
+                    'pageTitle' => $page['title'],
+                    'layout' => $siacImagesLayout,
+                ])
+            </section>
+        @endif
 
         @if (!empty($page['gallery']))
             <div class="siac-gallery-section">
@@ -198,6 +228,10 @@
                     @endforeach
                 </div>
             </div>
+        @endif
+
+        @if ($slug === 'concepto-calidad')
+            @include('siac.partials.validacion-concepto-calidad')
         @endif
     </article>
 @endsection

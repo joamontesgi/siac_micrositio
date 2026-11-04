@@ -16,22 +16,9 @@ class SiacController extends Controller
             ->orderByDesc('published_at')
             ->get();
 
-        $referenceDocuments = Document::query()
-            ->whereIn('title', [
-                'indicadores_UNAL_lineas_estrategicas.xlsx',
-                'SIAC_Reunión 6 de octubre _ Simulacro_V.2.pptx.pdf',
-            ])
-            ->orderBy('title')
-            ->get();
-
-        return view('siac.home', [
+        return view('siac.campana.index', [
             'recentDocuments' => $recentDocuments,
-            'referenceDocuments' => $referenceDocuments,
-            'indicatorSummary' => $indicators->conjuntoSummary(),
-            'indicatorTotal' => $indicators->totalCount(),
-            'indicatorSource' => $indicators->sourceFilename(),
             'homeLead' => $content->homeLead(),
-            'sources' => $content->sources(),
         ]);
     }
 

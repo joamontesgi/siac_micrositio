@@ -300,6 +300,10 @@ def attach_simulacro_images(pages: dict) -> None:
                 continue
             pages[slug].setdefault("images", []).append(image)
 
+    arch = pages.get("arquitectura-siac")
+    if arch and arch.get("images"):
+        arch["images_layout"] = "architecture"
+
 
 def main() -> None:
     leyenda = leyenda_sections()

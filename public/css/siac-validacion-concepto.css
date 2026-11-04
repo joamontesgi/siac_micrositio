@@ -1,0 +1,291 @@
+/* Validación concepto de calidad — scoped para layout UNAL */
+/* Línea visual SIAC — UNAL. Azul institucional, verde SIAC, columna única de lectura. */
+.siac-validacion-concepto{
+  --azul:#2A2A68;
+  --verde:#33C2A4;
+  --verde-h:#1E8C75;
+  --papel:#F9F9FB;
+  --superficie:#FFFFFF;
+  --tinta:#444652;
+  --tinta-suave:#6E6F79;
+  --linea:#E2E3E9;
+  --si:#1E8C75;
+  --no:#B4476B;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --texto:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+.siac-validacion-concepto *{box-sizing:border-box}
+
+.siac-validacion-concepto{background:transparent;color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;margin-top:2rem}
+.siac-validacion-concepto img{max-width:100%}
+.siac-validacion-concepto [hidden]{display:none!important}
+.siac-validacion-concepto .wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.siac-validacion-concepto h1,.siac-validacion-concepto h2,.siac-validacion-concepto h3{font-family:var(--display);color:var(--azul);text-wrap:balance;margin:0}
+.siac-validacion-concepto .portada .wrap{padding-block:40px 8px}
+.siac-validacion-concepto .portada h2{font-size:clamp(1.75rem,5.2vw,2.5rem);line-height:1.12;font-weight:700}
+.siac-validacion-concepto .concepto p{margin:0;font-size:1.06rem;line-height:1.72;text-align:justify;hyphens:auto}
+.siac-validacion-concepto .concepto b{color:var(--azul);font-weight:600}
+.siac-validacion-concepto .concepto em{color:var(--verde-h);font-weight:600;font-style:italic}
+.siac-validacion-concepto .instrumento .wrap{padding-block:38px}
+.siac-validacion-concepto button.primario,.siac-validacion-concepto button.secundario{font-family:var(--display);font-weight:600;font-size:.95rem;border-radius:999px;border:1.5px solid transparent;padding:11px 28px;cursor:pointer}
+.siac-validacion-concepto button.primario{background:var(--azul);color:#fff}
+.siac-validacion-concepto button.secundario{background:transparent;color:var(--azul);border-color:var(--linea)}
+
+.siac-validacion-concepto .cabecera{background:var(--verde);position:relative;overflow:hidden}
+.cabecera::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(42% 70% at 12% 120%,rgba(255,255,255,.16),transparent 70%),
+  radial-gradient(38% 80% at 88% -20%,rgba(255,255,255,.14),transparent 70%);pointer-events:none}
+.cabecera .siac-validacion-concepto .wrap{padding-block:22px 20px;position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.siac-validacion-concepto .marca{display:flex;flex-direction:column;gap:4px;min-width:0}
+.siac-validacion-concepto .eyebrow{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;opacity:.92}
+.marca strong{font-family:var(--display);font-size:1.05rem;font-weight:700;color:#fff;line-height:1.25}
+.siac-validacion-concepto .logos{height:46px;width:auto;flex:none}
+
+.portada .siac-validacion-concepto .wrap{padding-block:40px 8px}
+.siac-validacion-concepto h1{font-size:clamp(1.75rem,5.2vw,2.5rem);line-height:1.12;font-weight:700}
+.siac-validacion-concepto .sello{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--verde-h);margin-bottom:14px}
+.siac-validacion-concepto .sello::before{content:"";width:26px;height:3px;background:var(--verde);border-radius:2px}
+.siac-validacion-concepto .concepto{margin-top:22px;background:var(--superficie);border:1px solid var(--linea);border-left:5px solid var(--verde);border-radius:4px;padding:26px clamp(18px,4vw,32px);display:flex;flex-direction:column;gap:16px}
+.concepto p{margin:0;font-size:1.06rem;line-height:1.72;text-align:justify;hyphens:auto}
+.concepto b{color:var(--azul);font-weight:600}
+.concepto em{color:var(--verde-h);font-weight:600;font-style:italic}
+
+.instrumento .siac-validacion-concepto .wrap{padding-block:38px}
+.siac-validacion-concepto .titulo-bloque{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+.siac-validacion-concepto h2{font-size:1.4rem;font-weight:600}
+.siac-validacion-concepto .lede{color:var(--tinta-suave);font-size:1rem;margin:0;max-width:62ch}
+.siac-validacion-concepto .identidad{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:22px 0 10px}
+.siac-validacion-concepto label.campo{display:flex;flex-direction:column;gap:6px;font-family:var(--display);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);min-width:0}
+.siac-validacion-concepto input[type=text],.siac-validacion-concepto select,.siac-validacion-concepto textarea{font-family:var(--texto);font-size:1rem;color:var(--tinta);background:var(--superficie);border:1px solid var(--linea);border-radius:3px;padding:10px 12px;width:100%;min-width:0}
+.siac-validacion-concepto textarea{resize:vertical;min-height:84px;line-height:1.55}
+.siac-validacion-concepto input:focus-visible,.siac-validacion-concepto select:focus-visible,.siac-validacion-concepto textarea:focus-visible,.siac-validacion-concepto button:focus-visible,.siac-validacion-concepto summary:focus-visible{outline:3px solid var(--verde);outline-offset:2px}
+
+.siac-validacion-concepto .pregunta{background:var(--superficie);border:1px solid var(--linea);border-radius:4px;padding:22px clamp(16px,3.4vw,26px);display:grid;grid-template-columns:auto 1fr;gap:4px 18px;margin-top:16px}
+.siac-validacion-concepto .num{font-family:var(--display);font-size:1.5rem;font-weight:700;color:var(--verde);line-height:1;grid-row:span 4;font-variant-numeric:tabular-nums}
+.siac-validacion-concepto .criterio{font-family:var(--display);font-weight:600;font-size:1.02rem;color:var(--azul)}
+.siac-validacion-concepto .enunciado{margin:6px 0 0;font-size:1rem;line-height:1.6}
+.siac-validacion-concepto .opciones{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.siac-validacion-concepto .opcion{position:relative}
+.siac-validacion-concepto .opcion input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;margin:0;cursor:pointer}
+.siac-validacion-concepto .opcion span{display:block;font-family:var(--display);font-weight:600;font-size:.95rem;letter-spacing:.04em;padding:9px 26px;border:1.5px solid var(--linea);border-radius:999px;color:var(--tinta-suave);transition:.14s;background:var(--superficie)}
+.siac-validacion-concepto .opcion input:checked+span{border-color:var(--verde-h);background:var(--verde-h);color:#fff}
+.siac-validacion-concepto .opcion input:focus-visible+span{outline:3px solid var(--verde);outline-offset:2px}
+.siac-validacion-concepto .obs{margin-top:14px}
+.obs span{display:block;font-family:var(--display);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:6px}
+
+.siac-validacion-concepto .acciones{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.siac-validacion-concepto button{font-family:var(--display);font-weight:600;font-size:.95rem;border-radius:999px;border:1.5px solid transparent;padding:11px 28px;cursor:pointer;transition:.14s}
+.siac-validacion-concepto .primario{background:var(--azul);color:#fff}
+.primario:hover{background:var(--verde-h)}
+.siac-validacion-concepto .secundario{background:transparent;color:var(--azul);border-color:var(--linea)}
+.secundario:hover{border-color:var(--verde-h);color:var(--verde-h)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.siac-validacion-concepto .aviso{font-size:.92rem;color:var(--tinta-suave);background:var(--superficie);border:1px dashed var(--linea);border-radius:4px;padding:12px 14px;margin-top:16px}
+.aviso b{color:var(--azul)}
+
+.siac-validacion-concepto .panel{background:var(--superficie);border-top:1px solid var(--linea)}
+.panel .siac-validacion-concepto .wrap{padding-block:34px}
+.siac-validacion-concepto details>summary{font-family:var(--display);font-weight:600;color:var(--azul);cursor:pointer;font-size:1.05rem;list-style:none;display:flex;align-items:center;gap:10px}
+.siac-validacion-concepto details>summary::-webkit-details-marker{display:none}
+.siac-validacion-concepto details>summary::before{content:"";width:9px;height:9px;border-right:2px solid var(--verde);border-bottom:2px solid var(--verde);transform:rotate(-45deg);transition:.15s;flex:none}
+.siac-validacion-concepto details[open]>summary::before{transform:rotate(45deg)}
+.siac-validacion-concepto .panel-nota{color:var(--tinta-suave);font-size:.95rem;margin:10px 0 0;max-width:64ch}
+.siac-validacion-concepto .cabeza-res{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-top:26px}
+.siac-validacion-concepto .conteo{font-family:var(--display);font-weight:600;color:var(--verde-h);font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.siac-validacion-concepto .tally{margin-top:20px;display:flex;flex-direction:column;gap:18px}
+.siac-validacion-concepto .fila{display:flex;flex-direction:column;gap:8px}
+.fila-cab{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.fila-cab strong{font-family:var(--display);font-size:.95rem;color:var(--azul);font-weight:600}
+.cifras{font-family:var(--display);font-size:.86rem;color:var(--tinta-suave);font-variant-numeric:tabular-nums;white-space:nowrap}
+.siac-validacion-concepto .barra{height:12px;border-radius:999px;background:var(--linea);overflow:hidden;display:flex}
+.barra i{display:block;height:100%;transition:width .25s}
+.b-si{background:var(--si)}
+.b-no{background:var(--no)}
+.siac-validacion-concepto .leyenda{display:flex;gap:18px;margin-top:14px;font-size:.85rem;color:var(--tinta-suave);flex-wrap:wrap}
+.leyenda i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.siac-validacion-concepto .observaciones{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.siac-validacion-concepto .obs-item{border-left:3px solid var(--verde);padding:4px 0 4px 14px}
+.obs-meta{font-family:var(--display);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-suave)}
+.obs-texto{margin:4px 0 0;font-size:.98rem}
+.siac-validacion-concepto .vacio{margin-top:20px;border:1px dashed var(--linea);border-radius:4px;padding:26px 20px;text-align:center;color:var(--tinta-suave)}
+.vacio strong{display:block;font-family:var(--display);color:var(--azul);font-size:1rem;margin-bottom:4px}
+.siac-validacion-concepto .peligro{color:var(--no);border-color:var(--linea)}
+.peligro:hover{border-color:var(--no);color:var(--no)}
+
+.siac-validacion-concepto .pie{background:var(--verde)}
+.pie .siac-validacion-concepto .wrap{padding-block:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+.pie small{color:#fff;font-size:.8rem;opacity:.95;font-family:var(--display);letter-spacing:.04em}
+.siac-validacion-concepto .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--azul);color:#fff;font-family:var(--display);font-size:.9rem;padding:11px 22px;border-radius:999px;z-index:20;box-shadow:0 6px 24px rgba(0,0,0,.2)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:460px){
+  .siac-validacion-concepto .pregunta{grid-template-columns:1fr;gap:0}
+  .siac-validacion-concepto .num{grid-row:auto;margin-bottom:6px}
+  .siac-validacion-concepto .logos{height:38px}
+}
+@media print{
+  .siac-validacion-concepto .panel,.siac-validacion-concepto .acciones,.siac-validacion-concepto .cabecera::after{display:none}
+}
+
+/* Fondo azul del micrositio; tarjetas internas conservan estilo local claro */
+main.detalle .siac-validacion-concepto {
+  background: transparent !important;
+  color: var(--siac-text, #fff) !important;
+}
+
+main.detalle .siac-validacion-concepto .portada h2 {
+  color: var(--siac-gold, #ffc107) !important;
+  font-size: clamp(1.75rem, 5.2vw, 2.5rem) !important;
+  font-weight: 700 !important;
+  margin-top: 0 !important;
+}
+
+main.detalle .siac-validacion-concepto .instrumento h2,
+main.detalle .siac-validacion-concepto .cabeza-res h2 {
+  color: var(--siac-gold, #ffc107) !important;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.5rem !important;
+}
+
+main.detalle .siac-validacion-concepto .sello {
+  color: var(--siac-teal, #00b8a9) !important;
+}
+
+main.detalle .siac-validacion-concepto .sello::before {
+  background: var(--siac-teal, #00b8a9) !important;
+}
+
+main.detalle .siac-validacion-concepto .lede,
+main.detalle .siac-validacion-concepto .panel-nota {
+  color: var(--siac-muted, #a8b0d6) !important;
+}
+
+main.detalle .siac-validacion-concepto .panel-nota a {
+  color: var(--siac-teal, #00b8a9) !important;
+  font-weight: 600;
+}
+
+main.detalle .siac-validacion-concepto .criterio {
+  color: var(--azul) !important;
+}
+
+main.detalle .siac-validacion-concepto .pregunta .enunciado {
+  color: var(--tinta) !important;
+}
+
+main.detalle .siac-validacion-concepto .aviso,
+main.detalle .siac-validacion-concepto label.campo {
+  color: var(--tinta-suave) !important;
+}
+
+/* Panel de consolidación (sobre fondo azul SIAC) */
+main.detalle .siac-validacion-concepto .fila-cab strong {
+  color: var(--siac-text, #fff) !important;
+}
+
+main.detalle .siac-validacion-concepto .cifras,
+main.detalle .siac-validacion-concepto .leyenda {
+  color: var(--siac-muted, #a8b0d6) !important;
+}
+
+main.detalle .siac-validacion-concepto .observaciones .obs-meta {
+  color: var(--siac-teal, #00b8a9) !important;
+}
+
+main.detalle .siac-validacion-concepto .observaciones .obs-texto {
+  color: var(--siac-text-soft, #dce2ff) !important;
+}
+
+main.detalle .siac-validacion-concepto .barra {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+main.detalle .siac-validacion-concepto .vacio {
+  color: var(--siac-muted, #a8b0d6) !important;
+  border-color: var(--siac-border, rgba(255, 255, 255, 0.12)) !important;
+  background: rgba(0, 0, 0, 0.18) !important;
+}
+
+main.detalle .siac-validacion-concepto .concepto p {
+  color: var(--tinta) !important;
+}
+
+main.detalle .siac-validacion-concepto .concepto b,
+main.detalle .siac-validacion-concepto .aviso b {
+  color: var(--azul) !important;
+}
+
+main.detalle .siac-validacion-concepto .vacio strong {
+  color: var(--siac-gold, #ffc107) !important;
+}
+
+main.detalle .siac-validacion-concepto .concepto em {
+  color: var(--verde-h) !important;
+  font-style: italic !important;
+}
+
+main.detalle .siac-validacion-concepto .num {
+  color: var(--verde) !important;
+}
+
+main.detalle .siac-validacion-concepto .conteo {
+  color: var(--siac-teal, #00b8a9) !important;
+}
+
+main.detalle .siac-validacion-concepto input[type="text"],
+main.detalle .siac-validacion-concepto select,
+main.detalle .siac-validacion-concepto textarea {
+  color: var(--tinta) !important;
+  background: var(--superficie) !important;
+  border-color: var(--linea) !important;
+}
+
+main.detalle .siac-validacion-concepto .opcion span {
+  color: var(--tinta-suave) !important;
+  border-color: var(--linea) !important;
+  background: var(--superficie) !important;
+}
+
+main.detalle .siac-validacion-concepto .opcion input:checked + span {
+  color: #fff !important;
+  background: var(--verde-h) !important;
+  border-color: var(--verde-h) !important;
+}
+
+main.detalle .siac-validacion-concepto button.primario {
+  color: #fff !important;
+  background: var(--azul) !important;
+}
+
+main.detalle .siac-validacion-concepto button.secundario {
+  color: var(--azul) !important;
+  background: var(--superficie) !important;
+  border-color: var(--linea) !important;
+}
+
+main.detalle .siac-validacion-concepto button.peligro {
+  color: var(--no) !important;
+  background: var(--superficie) !important;
+}
+
+main.detalle .siac-validacion-concepto .instrumento,
+main.detalle .siac-validacion-concepto .panel,
+main.detalle .siac-validacion-concepto .portada {
+  background: transparent !important;
+}
+
+main.detalle .siac-validacion-concepto details > summary {
+  color: var(--siac-gold, #ffc107) !important;
+}
+
+main.detalle .siac-validacion-concepto .concepto,
+main.detalle .siac-validacion-concepto .pregunta,
+main.detalle .siac-validacion-concepto .aviso {
+  background: var(--superficie) !important;
+  border-color: var(--linea) !important;
+}
+
+main.detalle .siac-validacion-concepto .concepto {
+  border-left-color: var(--verde) !important;
+}

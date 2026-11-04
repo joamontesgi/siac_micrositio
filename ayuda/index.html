@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Micrositio SIAC UNAL</title>
+<meta name="description" content="Micrositio del Sistema Interno de Aseguramiento de la Calidad de la Universidad Nacional de Colombia. Fase II de la campaña Educación de Calidad: UN Bien Común.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ranchers&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Base equivalente al envoltorio de la plataforma */
+:root{color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<style>
+/* Portal institucional: barra de servicio, cabecera con pestañas, cabecera de
+   sección por pestaña y pie documental. El arco de la portada UNAL es el motivo. */
+:root{
+  /* Paleta oficial SIAC, Identificador Cálido 2026 */
+  --teal-pure:#00a99d;
+  --navy-pure:#292d67;
+  --amber-pure:#ffb000;
+  --purple:#6f278f;
+  --magenta:#fa0392;
+
+  --bg:#ffffff;
+  --surface:#f3f5fa;
+  --surface-2:#e7eaf4;
+  --line:#dadeea;
+  --ink:#23263f;
+  --muted:#5f6480;
+  --teal:#00a99d;
+  --teal-dk:#007f76;      /* derivado, legible sobre blanco */
+  --teal-soft:#dcf2f0;
+  --navy:#292d67;
+  --navy-bar:#222651;
+  --amber:#b57a00;        /* derivado, legible sobre blanco */
+  --amber-soft:#fff2d6;
+  --purple-dk:#6f278f;
+  --magenta-dk:#c70173;   /* derivado, legible sobre blanco */
+  --onbar:#e4e6f6;
+  --shadow:0 1px 2px rgba(41,45,103,.06),0 8px 22px rgba(41,45,103,.07);
+  --display:"Ranchers",system-ui,sans-serif;
+  --ui:"Asap",system-ui,sans-serif;
+  --body:"Asap",system-ui,sans-serif;
+  --maxw:1180px;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d0f1c;--surface:#161930;--surface-2:#1f2340;--line:#2e3357;
+    --ink:#ebedfa;--muted:#a2a8c8;--teal:#2fc9bc;--teal-dk:#5bdacd;--teal-soft:#0d3330;
+    --navy:#aab2ea;--navy-bar:#141731;--amber:#ffc44d;--amber-soft:#2e2412;
+    --purple-dk:#c48ad8;--magenta-dk:#ff62b9;--onbar:#d9dcf2;
+    --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.4);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d0f1c;--surface:#161930;--surface-2:#1f2340;--line:#2e3357;
+  --ink:#ebedfa;--muted:#a2a8c8;--teal:#2fc9bc;--teal-dk:#5bdacd;--teal-soft:#0d3330;
+  --navy:#aab2ea;--navy-bar:#141731;--amber:#ffc44d;--amber-soft:#2e2412;
+  --purple-dk:#c48ad8;--magenta-dk:#ff62b9;--onbar:#d9dcf2;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 22px rgba(0,0,0,.4);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-synthesis-weight:none;font-synthesis:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy-pure)}
+
+/* ---- banner de campaña con el logo en movimiento ---- */
+.newsbar{background:var(--navy-pure);color:#fff;overflow:hidden}
+.newsbar .wrap{display:flex;align-items:center;gap:20px;padding-block:14px;flex-wrap:wrap}
+.nb-anim{flex:0 0 auto;width:min(340px,66vw);line-height:0}
+.nb-anim img,.nb-anim picture{display:block;width:100%;height:auto}
+.nb-txt{font-size:15px;flex:1 1 260px;min-width:0;color:#dfe2f5;line-height:1.4}
+.nb-txt b{color:#fff;font-weight:600}
+.nb-cta{font-family:var(--ui);font-weight:600;font-size:14px;background:var(--amber-pure);color:#292d67;text-decoration:none;padding:9px 18px;border-radius:999px;white-space:nowrap}
+.nb-cta:hover{background:#fff}
+
+/* ---- paleta ---- */
+.palette{margin-top:30px}
+.sw{display:flex;flex-wrap:wrap;gap:9px;list-style:none;padding:0;margin:0}
+.sw li{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.07);border-radius:8px;padding:8px 12px;font-size:13.5px}
+.sw i{width:22px;height:22px;border-radius:5px;display:block;flex:0 0 auto}
+.sw b{font-weight:600;color:#fff;font-style:normal}
+.sw code{font-family:var(--display);font-weight:600;color:#9fe3da;letter-spacing:.03em}
+h1,h2,h3,h4{font-family:var(--ui);margin:0;line-height:1.16;text-wrap:balance;letter-spacing:-.008em}
+.cover h1,.pagehead h1,.figures b{font-family:var(--display);font-weight:400;letter-spacing:.012em;line-height:1.05}
+p{margin:0}
+a{color:var(--teal-dk)}
+img{display:block}
+:where(a,button,input,textarea,select,summary):focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ---- barra de servicio ---- */
+.utility{background:var(--navy-bar);color:var(--onbar);font-size:13px}
+.utility .wrap{display:flex;gap:16px;align-items:center;justify-content:space-between;padding-block:7px;flex-wrap:wrap}
+.utility .inst{font-family:var(--display);font-weight:600;letter-spacing:.03em}
+.utility ul{display:flex;gap:16px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.utility li{color:#b9c1dd}
+.utility .flag{color:var(--amber);font-weight:600}
+
+/* ---- cabecera ---- */
+.masthead{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.brandrow{display:flex;align-items:center;gap:18px;justify-content:space-between;padding-block:12px;flex-wrap:wrap}
+.lock{background:#fff;border-radius:7px;padding:8px 11px;line-height:0;flex:0 0 auto}
+.lock img{height:34px;width:auto}
+.brandtext{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--muted);max-width:34ch;line-height:1.3}
+.brandtext b{display:block;color:var(--navy);font-size:17px;letter-spacing:.01em}
+.tabsbar{overflow-x:auto;scrollbar-width:thin;border-top:1px solid var(--line)}
+.tabsbar ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+.tabsbar button{
+  font-family:var(--display);font-weight:600;font-size:14.5px;white-space:nowrap;cursor:pointer;
+  background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);
+  padding:13px 14px 11px;
+}
+.tabsbar button:hover{color:var(--ink)}
+.tabsbar button[aria-selected="true"]{color:var(--teal-dk);border-bottom-color:var(--teal)}
+
+/* ---- cabecera de sección ---- */
+.pagehead{background:var(--surface);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.arc{position:absolute;right:-30%;bottom:-66%;width:min(120%,900px);aspect-ratio:1;pointer-events:none;opacity:.8;
+  background:radial-gradient(circle at 100% 100%,transparent 0 55.6%,var(--teal-pure) 55.6% 57.3%,transparent 57.3% 58.7%,var(--amber-pure) 58.7% 60.4%,transparent 60.4%)}
+.pagehead .wrap{position:relative;padding-block:clamp(30px,4.4vw,52px)}
+.eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-dk)}
+.pagehead h1{font-size:clamp(27px,4.3vw,42px);font-weight:700;margin-top:12px;color:var(--navy);max-width:19ch}
+.pagehead .lede{margin-top:14px;max-width:62ch;font-size:clamp(16.5px,1.7vw,18.5px);color:var(--ink)}
+
+/* ---- portada con fotografía ---- */
+.cover{display:grid;grid-template-columns:1.05fr .95fr;gap:0;background:var(--surface);border-bottom:1px solid var(--line)}
+.cover .txt{padding:clamp(30px,4vw,56px) clamp(20px,3vw,44px);display:flex;flex-direction:column;justify-content:center;min-width:0}
+.keyvis{width:clamp(84px,9vw,112px);height:auto;margin-bottom:16px}
+.cover h1{font-size:clamp(32px,5vw,56px);color:var(--navy);max-width:16ch}
+.pagehead h1{font-size:clamp(30px,5vw,50px)}
+.figures b{font-size:clamp(34px,4.4vw,46px)}
+.cover .lede{margin-top:16px;font-size:clamp(16.5px,1.7vw,18.5px);max-width:50ch}
+.cover figure{margin:0;position:relative;min-height:260px;background:var(--surface-2)}
+.cover figure img{width:100%;height:100%;object-fit:cover;object-position:35% 68%;position:absolute;inset:0}
+.cover figcaption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(16,24,40,.72));color:#fff;font-size:12.5px;padding:26px 16px 10px}
+.cta-row{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+.btn{font-family:var(--display);font-weight:600;font-size:15px;text-decoration:none;padding:11px 20px;border-radius:var(--r);border:1.5px solid transparent;cursor:pointer;display:inline-block}
+.btn-main{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-main:hover{background:var(--navy);border-color:var(--navy)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--bg)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dk)}
+
+/* ---- cifras ---- */
+.figures{background:var(--navy-bar);color:#fff}
+.figures .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;padding-block:28px}
+.figures b{display:block;font-family:var(--display);font-size:clamp(28px,3.6vw,38px);font-weight:700;color:#fff;font-variant-numeric:tabular-nums;line-height:1}
+.figures span{display:block;margin-top:7px;font-size:13.5px;color:#bcc4e0;line-height:1.4}
+
+/* ---- bloques ---- */
+.band{border-bottom:1px solid var(--line)}
+.band.alt{background:var(--surface)}
+.band > .wrap{padding-block:clamp(34px,4.6vw,58px)}
+.shead{max-width:62ch;margin-bottom:24px}
+.shead h2{font-size:clamp(21px,2.8vw,28px);font-weight:700;color:var(--navy)}
+.shead p{margin-top:11px;color:var(--muted);font-size:16.5px}
+.kicker{font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--teal-dk);display:block;margin-bottom:12px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:18px;min-width:0}
+.card h3{font-size:16.5px;font-weight:600;color:var(--navy)}
+.card p{margin-top:8px;font-size:15.5px;color:var(--muted);line-height:1.5}
+.card.fx{position:relative;padding-top:23px;overflow:hidden}
+.card.fx::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--fx)}
+.card.fx h3{color:var(--fx-txt,var(--navy))}
+.card.pic{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.card.pic .art{display:block;width:100%;aspect-ratio:16/7;background:var(--surface-2)}
+.card.pic h3{padding:17px 18px 0}
+.card.pic p{padding:0 18px 19px}
+
+/* accesos rápidos */
+.quick{display:block;text-decoration:none;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);min-width:0}
+.quick:hover{border-color:var(--teal)}
+.quick b{display:block;font-family:var(--display);font-size:16.5px;color:var(--navy)}
+.quick span{display:block;margin-top:7px;font-size:14.5px;color:var(--muted);line-height:1.45}
+.quick em{font-style:normal;color:var(--teal-dk);font-weight:600;font-size:14px;display:block;margin-top:11px}
+
+/* declaraciones de calidad */
+.claims{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.claims div{background:var(--bg);padding:22px 20px}
+.claims p{font-family:var(--display);font-weight:600;font-size:18px;color:var(--navy);line-height:1.3}
+.claims small{display:block;margin-top:10px;font-family:var(--body);font-size:14px;color:var(--muted);line-height:1.45}
+.notmean{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:16px}
+.notmean div{background:var(--amber-soft);border-radius:var(--r);padding:16px 18px}
+.notmean b{font-family:var(--display);color:var(--amber);font-size:15px;display:block;margin-bottom:5px}
+.notmean span{font-size:15px;color:var(--ink)}
+
+/* normas */
+.norm{display:grid;grid-template-columns:150px 1fr;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:17px 19px}
+.norm .ref{font-family:var(--display);font-weight:700;font-size:15px;color:var(--teal-dk);line-height:1.3}
+.norm .ref span{display:block;font-weight:500;color:var(--muted);font-size:13px;margin-top:4px}
+.norm p{font-size:15.5px;color:var(--ink);line-height:1.5}
+.norm blockquote{margin:10px 0 0;padding-left:14px;border-left:3px solid var(--teal);font-style:italic;color:var(--muted);font-size:15px}
+
+/* actividades */
+.act{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.act .n{font-family:var(--display);font-weight:700;font-size:18px;color:var(--teal-dk);background:var(--teal-soft);border-radius:8px;height:38px;display:flex;align-items:center;justify-content:center;font-variant-numeric:tabular-nums}
+.act h3{font-size:16px;font-weight:600;color:var(--navy)}
+.act p{margin-top:6px;font-size:15px;color:var(--muted);line-height:1.5}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap}
+.tag.on{background:var(--teal-soft);color:var(--teal-dk)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{font-family:var(--body);font-size:14.5px;font-weight:600;cursor:pointer;padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--muted)}
+.filters button:hover{border-color:var(--teal);color:var(--teal-dk)}
+.filters button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* mapa */
+.mapwrap{display:grid;grid-template-columns:minmax(230px,330px) 1fr;gap:26px;align-items:start}
+.mapwrap svg{width:100%;height:auto;max-width:100%}
+.mapwrap .land{fill:var(--surface-2);stroke:var(--line);stroke-width:.5}
+.mapwrap .pin{fill:var(--teal);stroke:var(--bg);stroke-width:1.1;cursor:pointer}
+.mapwrap .pin.hot{fill:var(--amber)}
+.mapwrap .lbl{font-family:var(--display);font-size:3.5px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:1.1;stroke-linejoin:round}
+.mapwrap .inset{fill:none;stroke:var(--line);stroke-width:.6;stroke-dasharray:2 1.6}
+.maplist{display:grid;gap:10px;min-width:0}
+.int{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:start}
+.int.hot{border-color:var(--amber);box-shadow:var(--shadow)}
+.int .id{font-family:var(--display);font-weight:700;font-size:14px;color:#fff;background:var(--navy-bar);border-radius:6px;padding:6px 0;text-align:center;font-variant-numeric:tabular-nums}
+.int h3{font-size:16px;font-weight:600;color:var(--navy)}
+.int .sub{font-size:14px;color:var(--muted);margin-top:3px}
+.dates{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px}
+.dates dt{font-family:var(--display);font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.dates dd{margin:3px 0 0;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+
+/* devolución */
+.resp{display:grid;grid-template-columns:auto 1fr;gap:11px 16px;align-items:baseline}
+.resp dt{font-family:var(--display);font-weight:600;color:var(--teal-dk);font-size:15.5px;white-space:nowrap}
+.resp dd{margin:0;color:var(--muted);font-size:15.5px}
+
+/* formulario */
+.form{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.form label{display:block;font-weight:600;font-size:15px;margin-bottom:5px}
+.form .hint{font-weight:400;color:var(--muted);font-size:14px;display:block;margin-bottom:8px}
+.form textarea,.form input,.form select{width:100%;font-family:var(--body);font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:11px 12px}
+.form textarea{min-height:104px;resize:vertical}
+.field{margin-bottom:17px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.receipt{margin-top:18px;background:var(--teal-soft);border:1px solid var(--teal);border-radius:var(--r);padding:18px}
+.receipt h4{font-size:16px;color:var(--teal-dk)}
+.receipt p{margin-top:8px;font-size:15.5px}
+.receipt code{font-family:var(--display);font-weight:700;letter-spacing:.04em;background:var(--bg);padding:2px 8px;border-radius:5px}
+
+/* documentos */
+.doc{display:flex;gap:14px;align-items:baseline;background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.doc .code{font-family:var(--display);font-weight:700;font-size:14px;color:var(--teal-dk);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.doc b{font-weight:600;font-size:15.5px;display:block}
+.doc span{display:block;font-size:14.5px;color:var(--muted);margin-top:3px}
+
+/* preguntas */
+details{border-bottom:1px solid var(--line)}
+details summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;position:relative;font-family:var(--display);font-weight:600;font-size:16.5px;color:var(--navy)}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";position:absolute;right:6px;top:14px;font-size:22px;color:var(--teal);line-height:1}
+details[open] summary::after{content:"\2212"}
+details .ans{padding:0 0 18px;color:var(--muted);font-size:16px;max-width:74ch}
+
+.note{background:var(--amber-soft);border-radius:var(--r);padding:16px 18px;font-size:15.5px;color:var(--ink)}
+.note b{font-family:var(--display);color:var(--amber)}
+
+/* pie */
+footer{background:var(--navy-bar);color:#c6cde6}
+footer .wrap{padding-block:40px}
+.footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px}
+footer h4{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:14.5px}
+footer a{color:#c6cde6;text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.footbrand{display:flex;flex-direction:column;gap:14px}
+.footbrand .lock{align-self:flex-start}
+.sign{font-family:var(--display);font-weight:700;font-size:17px;color:#fff;max-width:22ch;line-height:1.25}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
+.tags span{font-size:13px;color:#9fe3da;background:rgba(0,133,126,.22);padding:4px 11px;border-radius:999px}
+.legal{margin-top:26px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);font-size:13px;color:#9aa3c4;max-width:80ch;line-height:1.55}
+
+@media (max-width:860px){
+  .cover{grid-template-columns:1fr}
+  .cover figure{min-height:220px;order:-1}
+  .mapwrap{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .norm{grid-template-columns:1fr;gap:8px}
+  .int{grid-template-columns:1fr}
+  .int .id{width:54px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="newsbar">
+  <div class="wrap">
+    <span class="nb-anim"><picture><source srcset="siac-movimiento.webp" type="image/webp"><img src="siac-movimiento.gif" alt="SIAC. Sistema Interno de Aseguramiento de la Calidad. ¡Educación de calidad, UN bien común!"></picture></span>
+    <p class="nb-txt"><b>Nueve sedes, muchas formas de vivir la Universidad.</b> Comparte lo que funciona y lo que podemos mejorar. Descubre cómo tus aportes pueden enriquecer la propuesta del SIAC.</p>
+    <a class="nb-cta" href="#participa" data-go="participa">Participar</a>
+  </div>
+</div>
+
+<div class="utility">
+  <div class="wrap">
+    <span class="inst">Universidad Nacional de Colombia</span>
+    <ul>
+      <li>Vicerrectoría General</li>
+      <li>Vicerrectoría Académica</li>
+      <li>Proyecto de inversión 724-10-115</li>
+      <li class="flag">Maqueta de trabajo</li>
+    </ul>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brandrow">
+      <span class="lock"><img src="lockup2.png" alt="SIAC, Universidad Nacional de Colombia"></span>
+      <p class="brandtext"><b>Sistema Interno de Aseguramiento de la Calidad</b></p>
+    </div>
+  </div>
+  <div class="tabsbar">
+    <div class="wrap">
+      <ul role="tablist" aria-label="Secciones del micrositio">
+        <li><button role="tab" id="t-siac" aria-controls="p-siac" aria-selected="true">El SIAC</button></li>
+        <li><button role="tab" id="t-calidad" aria-controls="p-calidad" aria-selected="false">Calidad en la UNAL</button></li>
+        <li><button role="tab" id="t-normatividad" aria-controls="p-normatividad" aria-selected="false">Normatividad</button></li>
+        <li><button role="tab" id="t-sisaica" aria-controls="p-sisaica" aria-selected="false">SISAICA</button></li>
+        <li><button role="tab" id="t-participa" aria-controls="p-participa" aria-selected="false">Participa</button></li>
+        <li><button role="tab" id="t-sedes" aria-controls="p-sedes" aria-selected="false">Sedes y agenda</button></li>
+        <li><button role="tab" id="t-devolucion" aria-controls="p-devolucion" aria-selected="false">Lo dijiste, quedó</button></li>
+        <li><button role="tab" id="t-preguntas" aria-controls="p-preguntas" aria-selected="false">Preguntas</button></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ================= EL SIAC ================= -->
+<main id="p-siac" role="tabpanel" aria-labelledby="t-siac">
+  <div class="cover">
+    <div class="txt">
+      <img class="keyvis" src="keyvisual.png" alt="Educación de Calidad, #UNBienComún">
+      <p class="eyebrow">Tu experiencia tiene mucho que aportar</p>
+      <h1>La calidad se construye contigo</h1>
+      <p class="lede">¿Qué hace mejor tu experiencia en la UNAL? El Sistema Interno de Aseguramiento de la Calidad (SIAC) busca conectar lo que aprendemos, evaluamos y decidimos para mejorar juntos. Explora la propuesta y aporta tu mirada.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="#participa" data-go="participa">Quiero aportar</a>
+        <a class="btn btn-ghost" href="#sedes" data-go="sedes">Explorar la agenda de mi sede</a>
+      </div>
+    </div>
+    <figure>
+      <img src="campus.jpg" alt="Estudiantes de la Universidad Nacional en un sendero de campus">
+      <figcaption>Nueve sedes, experiencias diversas y un propósito compartido: una educación de calidad.</figcaption>
+    </figure>
+  </div>
+
+  <div class="figures">
+    <div class="wrap">
+      <div><b>11</b><span>encuentros con la comunidad</span></div>
+      <div><b>9</b><span>sedes que aportan desde su diversidad</span></div>
+      <div><b>10</b><span>formas de participar: encuentra la tuya</span></div>
+      <div><b>100 %</b><span>de los aportes con respuesta prevista</span></div>
+      <div><b>30</b><span>días como plazo máximo previsto para publicar resultados</span></div>
+    </div>
+  </div>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="shead">
+        <h2>¿Qué conecta el SIAC?</h2>
+        <p>El SIAC busca conectar la evaluación, la participación, la información y la planeación de la Universidad. ¿Para qué? Para que reconocer una dificultad sea el primer paso hacia una mejora, con responsables y seguimiento.</p>
+      </div>
+      <span class="kicker">La calidad está en lo que vivimos cada día</span>
+      <div class="grid g3">
+        <div class="card pic">
+          <svg class="art" viewBox="0 0 160 70" role="img" aria-label="Personas reunidas bajo el arco institucional">
+            <rect width="160" height="70" fill="var(--surface-2)"></rect>
+            <path d="M74 70 A86 86 0 0 1 160 -16" fill="none" stroke="var(--amber-pure)" stroke-width="2.6" opacity=".85"></path>
+            <path d="M86 70 A74 74 0 0 1 160 -4" fill="none" stroke="var(--teal-pure)" stroke-width="2.6"></path>
+            <line x1="14" y1="61" x2="118" y2="61" stroke="var(--line)" stroke-width="1.6"></line>
+            <circle cx="30" cy="36" r="7" fill="var(--navy)" opacity=".55"></circle>
+            <circle cx="22" cy="50" r="7.5" fill="var(--teal-pure)" opacity=".9"></circle>
+            <circle cx="38" cy="50" r="7.5" fill="var(--amber-pure)" opacity=".9"></circle>
+            <circle cx="55" cy="44" r="4.5" fill="var(--teal-pure)" opacity=".5"></circle>
+            <circle cx="66" cy="53" r="3.2" fill="var(--amber-pure)" opacity=".5"></circle>
+          </svg>
+          <h3>Vida Universitaria</h3>
+          <p>Promover una experiencia universitaria digna, incluyente y con sentido de pertenencia para quienes estudian, enseñan, trabajan y egresan.</p>
+        </div>
+        <div class="card pic">
+          <svg class="art" viewBox="0 0 160 70" role="img" aria-label="Tres funciones misionales entrelazadas">
+            <rect width="160" height="70" fill="var(--surface-2)"></rect>
+            <path d="M-6 19 C38 19 50 51 92 51 S150 19 168 19" fill="none" stroke="var(--navy)" stroke-width="4.2" stroke-linecap="round" opacity=".6"></path>
+            <path d="M-6 51 C38 51 50 19 92 19 S150 51 168 51" fill="none" stroke="var(--teal-pure)" stroke-width="4.2" stroke-linecap="round"></path>
+            <path d="M-6 35 C44 35 54 35 92 35 S150 35 168 35" fill="none" stroke="var(--amber-pure)" stroke-width="4.2" stroke-linecap="round" opacity=".9"></path>
+            <circle cx="92" cy="35" r="5" fill="var(--surface-2)"></circle>
+            <circle cx="92" cy="35" r="3" fill="var(--amber-pure)"></circle>
+          </svg>
+          <h3>Funciones Misionales</h3>
+          <p>Conectar la formación, la investigación y la extensión para responder a los retos de la sociedad.</p>
+        </div>
+        <div class="card pic">
+          <svg class="art" viewBox="0 0 160 70" role="img" aria-label="Instancias de gobierno articuladas entre sí">
+            <rect width="160" height="70" fill="var(--surface-2)"></rect>
+            <line x1="80" y1="12" x2="80" y2="60" stroke="var(--line)" stroke-width="1.8"></line>
+            <rect x="48" y="9" width="64" height="12" rx="3" fill="var(--navy)" opacity=".8"></rect>
+            <rect x="36" y="29" width="88" height="12" rx="3" fill="var(--teal-pure)"></rect>
+            <rect x="24" y="49" width="112" height="12" rx="3" fill="var(--amber-pure)" opacity=".9"></rect>
+            <circle cx="80" cy="25" r="2.6" fill="var(--teal-pure)"></circle>
+            <circle cx="80" cy="45" r="2.6" fill="var(--amber-pure)"></circle>
+          </svg>
+          <h3>Gobernanza Universitaria y Gestión Institucional</h3>
+          <p>Convertir los resultados de la evaluación y la planeación en decisiones oportunas y fundamentadas.</p>
+        </div>
+      </div>
+      <span class="kicker" style="margin-top:30px">Cuatro formas de convertir el conocimiento en mejora</span>
+      <div class="grid g2">
+        <div class="card fx" style="--fx:#00a99d;--fx-txt:var(--teal-dk)"><h3>Evaluación Institucional de la Calidad</h3><p>Reconocer avances y oportunidades de mejora a partir de las evaluaciones que realiza la Universidad.</p></div>
+        <div class="card fx" style="--fx:#fa0392;--fx-txt:var(--magenta-dk)"><h3>Participación y Diálogo Institucional</h3><p>Escuchar experiencias diversas, analizar los aportes y comunicar cómo se tienen en cuenta.</p></div>
+        <div class="card fx" style="--fx:#6f278f;--fx-txt:var(--purple-dk)"><h3>Gestión del Conocimiento y la Información</h3><p>Transformar datos confiables y conocimiento compartido en mejores decisiones.</p></div>
+        <div class="card fx" style="--fx:#ffb000;--fx-txt:var(--amber)"><h3>Gestión del Cambio y Planeación Estratégica</h3><p>Dar a cada mejora un rumbo, responsables y seguimiento para avanzar hacia resultados.</p></div>
+      </div>
+      <span class="kicker" style="margin-top:30px">Cómo mejora la Universidad: el ciclo ACTÚA</span>
+      <div class="grid g4">
+        <div class="card"><h3>Apreciar</h3><p>Reconocer lo que ya funciona.</p></div>
+        <div class="card"><h3>Comprender</h3><p>Entender las causas y escuchar distintas perspectivas.</p></div>
+        <div class="card"><h3>Trazar</h3><p>Decidir qué mejorar y por dónde empezar.</p></div>
+        <div class="card"><h3>Unir</h3><p>Conectar a las personas y los equipos que harán posible la mejora.</p></div>
+        <div class="card"><h3>Aprender</h3><p>Revisar los resultados y aprovechar lo aprendido para seguir mejorando.</p></div>
+      </div>
+      <div class="note" style="margin-top:26px"><b>Tu participación tiene un alcance claro.</b> Esta fase permite conocer la propuesta y aportar a su revisión. Los aportes se registran, analizan y responden para enriquecer el proceso. La aprobación corresponde a los órganos de gobierno universitario competentes.</div>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <div class="shead"><h2>Una propuesta para conocer, conversar y enriquecer</h2><p>La propuesta reúne diagnósticos, métodos y herramientas para fortalecer la calidad en la UNAL. Conoce qué desarrolla cada componente y encuentra los temas en los que tu experiencia puede aportar.</p></div>
+      <div class="grid g2">
+        <div class="card"><h3>Evaluación Institucional de la Calidad</h3><p>Explora cómo se evalúa la Universidad, cómo mejorar esas evaluaciones y cómo el ciclo ACTÚA orienta el aprendizaje institucional.</p></div>
+        <div class="card"><h3>Participación y Diálogo</h3><p>Conoce los espacios de participación existentes y las orientaciones para fortalecer el diálogo y el seguimiento a los aportes.</p></div>
+        <div class="card"><h3>Gestión del Conocimiento y la Información</h3><p>Descubre cómo aprovechar mejor la información institucional: un diagnóstico de capacidades, un índice para valorarlas y el diseño de SISAICA.</p></div>
+        <div class="card"><h3>Gestión del Cambio y Mejoramiento Continuo</h3><p>Conoce cómo se gestionan las mejoras y qué se propone para priorizarlas, organizarlas y acompañar su desarrollo.</p></div>
+      </div>
+      <div class="grid g3" style="margin-top:14px">
+        <div class="card"><h3>Modelo Institucional de la Calidad</h3><p>Propone criterios para reconocer, analizar y valorar la calidad desde la identidad y los propósitos de la UNAL.</p></div>
+        <div class="card"><h3>Informe técnico de la propuesta</h3><p>Reúne los fundamentos, diagnósticos y desarrollos de la propuesta. Un punto de partida para profundizar en el SIAC.</p></div>
+        <div class="card"><h3>Proyecto de Acuerdo</h3><p>Presenta la propuesta normativa para formalizar el SIAC. Los aportes de esta fase contribuyen a su revisión antes de someterla a las instancias competentes.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="shead"><h2>¿Qué quieres descubrir ahora?</h2></div>
+      <div class="grid g4">
+        <a class="quick" href="#participa" data-go="participa"><b>Participa</b><span>¿Tienes unos minutos o quieres conversar con más calma? Encuentra una actividad para ti.</span><em>Ver las actividades</em></a>
+        <a class="quick" href="#sedes" data-go="sedes"><b>Sedes y agenda</b><span>Encuentra los encuentros de tu sede y las fechas previstas para conocer sus resultados.</span><em>Ver el calendario</em></a>
+        <a class="quick" href="#devolucion" data-go="devolucion"><b>Lo dijiste, quedó</b><span>Sigue el recorrido de los aportes: cómo se analizan y qué respuesta reciben.</span><em>Conocer el recorrido de tu aporte</em></a>
+        <a class="quick" href="#normatividad" data-go="normatividad"><b>Normatividad</b><span>Conoce las normas que orientan el SIAC y su relación con la autonomía universitaria.</span><em>Ver el marco</em></a>
+        <a class="quick" href="#sisaica" data-go="sisaica"><b>SISAICA</b><span>Descubre la propuesta tecnológica para conectar información y apoyar mejores decisiones.</span><em>Ver la propuesta</em></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= CALIDAD ================= -->
+<main id="p-calidad" role="tabpanel" aria-labelledby="t-calidad" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Una palabra, muchas experiencias</p>
+      <h1>¿Dónde vives la calidad en la UNAL?</h1>
+      <p class="lede">La calidad se reconoce en las clases, los servicios, la investigación y las oportunidades de participar. Estas ocho ideas muestran cómo la propuesta del SIAC busca fortalecer esa experiencia. ¿Con cuál te identificas?</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="claims">
+        <div><p>Que una dificultad detectada en un programa llegue a quien puede atenderla.</p><small>Con seguimiento y una respuesta que permita conocer los avances.</small></div>
+        <div><p>Evaluarnos para aprender y mejorar.</p><small>Componente de Evaluación Institucional de la Calidad.</small></div>
+        <div><p>Que quien estudia, enseña, trabaja y egresa viva la Universidad con dignidad.</p><small>Componente de Vida Universitaria: reconocimiento e inclusión.</small></div>
+        <div><p>Formación, investigación y extensión articuladas y comprometidas con la sociedad.</p><small>Componente de Funciones Misionales.</small></div>
+        <div><p>Tu voz, con escucha, respuesta y seguimiento.</p><small>Componente de Participación y Diálogo Institucional.</small></div>
+        <div><p>Datos confiables para tomar mejores decisiones.</p><small>Componente de Gestión del Conocimiento y la Información.</small></div>
+        <div><p>Mejoras que pasen de la propuesta a la acción.</p><small>Componente de Gestión del Cambio y Planeación Estratégica.</small></div>
+        <div><p>Reglas claras para que todo esto funcione.</p><small>Gobernanza Universitaria y Gestión Institucional.</small></div>
+      </div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:start">
+        <div>
+          <div class="shead"><h2>La calidad también está en estos detalles</h2><p>Piensa en tu día a día: estos son algunos ámbitos en los que evaluar, escuchar y actuar puede ayudar a mejorar.</p></div>
+          <div class="grid g2" style="gap:10px">
+            <div class="card"><h3>Cupos y horarios de laboratorio</h3></div>
+            <div class="card"><h3>Tiempos de respuesta institucional</h3></div>
+            <div class="card"><h3>Permanencia y graduación</h3></div>
+            <div class="card"><h3>Bienestar universitario</h3></div>
+            <div class="card"><h3>Carga docente</h3></div>
+          </div>
+        </div>
+        <figure style="margin:0;border-radius:var(--r);overflow:hidden;border:1px solid var(--line)">
+          <img src="detalle.jpg" alt="Estudiantes caminando por un sendero del campus" style="width:100%;height:auto">
+        </figure>
+      </div>
+      <div class="shead" style="margin-top:36px"><h2>Tres claves para entender la propuesta</h2></div>
+      <div class="notmean">
+        <div><b>Mejorar cada día</b><span>El mejoramiento continuo es el propósito central. La acreditación es uno de los procesos con los que se articula.</span></div>
+        <div><b>Construir en comunidad</b><span>La experiencia de estudiantes, docentes, personal administrativo y egresados ayuda a comprender qué debemos fortalecer.</span></div>
+        <div><b>Participar y conocer los resultados</b><span>La propuesta combina conversaciones, actividades y aportes escritos con análisis y respuesta.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= NORMATIVIDAD ================= -->
+<main id="p-normatividad" role="tabpanel" aria-labelledby="t-normatividad" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">¿Sabías que…?</p>
+      <h1>¿Qué orienta la construcción del SIAC?</h1>
+      <p class="lede">Conoce el marco normativo que sustenta el SIAC y su relación con la autonomía de la UNAL. Esta ruta te ayuda a ubicar las normas nacionales, los acuerdos internos y la propuesta en construcción.</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <span class="kicker">Marco nacional</span>
+      <div class="grid" style="gap:12px">
+        <div class="norm"><div class="ref">Ley 1188 de 2008<span>Congreso de la República</span></div><p>Regula el registro calificado de los programas de educación superior. Es la ley que desarrollan los decretos siguientes.</p></div>
+        <div class="norm"><div class="ref">Decreto 1075 de 2015<span>Modificado por el Decreto 1330 de 2019</span></div><p>Establece la cultura de la autoevaluación como condición de calidad y dispone que toda institución cuente con un SIAC que contemple, al menos, sistemas de información, mecanismos de seguimiento al cumplimiento de condiciones de calidad, participación de las comunidades académicas, articulación con la planeación estratégica institucional y procesos continuos de autoevaluación y autorregulación.<blockquote>«La institución deberá contar con un sistema interno de aseguramiento de la calidad». Decreto 1330 de 2019, artículo 2.5.3.2.3.1.4</blockquote></p></div>
+        <div class="norm"><div class="ref">Acuerdo 01 de 2025<span>Consejo Nacional de Educación Superior, CESU</span></div><p>Actualiza el Modelo de Aseguramiento en Alta Calidad. Reconoce el mejoramiento continuo y la autorregulación como factores clave de la evaluación institucional y exige ahora un SIAC consolidado, maduro y articulado con la planeación, a través del cual se evidencien los ejercicios internos de aseguramiento.</p></div>
+        <div class="norm"><div class="ref">Plan de Fomento a la Calidad<span>Decreto 1075 de 2015, artículo 2.5.4.3.4</span></div><p>Contempla como línea de inversión el fortalecimiento y la consolidación de los sistemas internos de aseguramiento de la calidad, para armonizar registro calificado y acreditación y para apoyar los planes de mejoramiento.</p></div>
+        <div class="norm"><div class="ref">Plan Nacional de Desarrollo 2022-2026<span>«Colombia Potencia Mundial de la Vida»</span></div><p>Plantea la reconceptualización del sistema de aseguramiento de la calidad en la educación superior, con el fortalecimiento de los SIAC para fomentar la autoevaluación, la autorregulación y la autonomía institucional.</p></div>
+      </div>
+      <span class="kicker" style="margin-top:30px">Régimen propio de la Universidad Nacional</span>
+      <div class="grid" style="gap:12px">
+        <div class="norm"><div class="ref">Decreto 1210 de 1993<span>Régimen orgánico especial</span></div><p>Asigna a la Universidad el mandato de desarrollar la educación superior en el país con fundamento en la excelencia, y le otorga el régimen de autonomía con el que cumple esa misión como institución pública, nacional y autónoma.</p></div>
+        <div class="norm"><div class="ref">Acuerdo 011 de 2005<span>Consejo Superior Universitario</span></div><p>Formaliza ese régimen de autonomía. La autonomía académica incluye la facultad de definir su propio sistema de evaluación interno y de decidir sobre su evaluación externa con fines de acreditación.</p></div>
+        <div class="norm"><div class="ref">Acuerdo 151 de 2014<span>Consejo Superior Universitario</span></div><p>Establece la autoevaluación como un proceso participativo, académico y reflexivo, orientado al mejoramiento de los programas curriculares y al logro de la excelencia académica. Es la norma que el SIAC se propone actualizar.</p></div>
+        <div class="norm"><div class="ref">Acuerdos 29 de 2004 y 030 de 2007<span>Consejo Superior Universitario</span></div><p>Adoptan, respectivamente, la acreditación de programas curriculares ante el Consejo Nacional de Acreditación y la acreditación institucional.</p></div>
+        <div class="norm"><div class="ref">Acuerdo 015 de 2023<span>Consejo Superior Universitario</span></div><p>Proyecta el Plan de Fomento a la Calidad de la Universidad, dentro del cual se inscribe la consolidación del SIAC.</p></div>
+      </div>
+      <span class="kicker" style="margin-top:30px">Lo que está en construcción</span>
+      <div class="grid" style="gap:12px">
+        <div class="norm"><div class="ref">Proyecto de Acuerdo del SIAC<span>Anexo 4 del informe técnico</span></div><p>Es el producto normativo de esta fase: la propuesta para formalizar e implementar el SIAC, que llevaría el sistema al Consejo Superior Universitario.</p></div>
+        <div class="norm"><div class="ref">Proyecto 724-10-115<span>Proyecto de inversión</span></div><p>«Consolidación del Sistema Interno de Aseguramiento de la Calidad para la Universidad Nacional de Colombia». Es el proyecto bajo el cual se desarrolla esta fase de socialización.</p></div>
+      </div>
+      <div class="note" style="margin-top:26px"><b>Conocer la propuesta es el primer paso para aportar.</b> Esta fase recoge experiencias y propuestas que contribuyen a la revisión del SIAC. Su aprobación corresponde a las instancias de gobierno universitario competentes.</div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= SISAICA ================= -->
+<main id="p-sisaica" role="tabpanel" aria-labelledby="t-sisaica" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Sistema Inteligente de Apoyo para el Aseguramiento Interno de la Calidad</p>
+      <h1>SISAICA: conectar información para decidir mejor</h1>
+      <p class="lede">¿Qué podríamos mejorar si encontráramos la información que necesitamos en el momento oportuno? SISAICA es la propuesta tecnológica que busca conectar datos y conocimiento para apoyar la evaluación, el seguimiento y las decisiones del SIAC.</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="grid g2" style="align-items:start">
+        <div class="card">
+          <span class="kicker">Qué busca</span>
+          <p style="color:var(--ink);font-size:16px">Integrar información académica, administrativa y de fuentes externas, y aprovechar herramientas de análisis, modelos predictivos e inteligencia artificial para facilitar la evaluación y el seguimiento de las mejoras.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Cómo se conecta con lo que ya existe</span>
+          <p style="color:var(--ink);font-size:16px">Su diseño busca que los sistemas existentes compartan información y se complementen, para reducir reportes repetidos y facilitar el trabajo de la comunidad.</p>
+        </div>
+      </div>
+      <span class="kicker" style="margin-top:30px">Tres claves para conectar la información</span>
+      <div class="grid g3">
+        <div class="card"><h3>Interoperabilidad</h3><p>Permitir que los sistemas intercambien información y reducir la duplicación de reportes.</p></div>
+        <div class="card"><h3>Gobernanza de datos</h3><p>Definir responsabilidades y reglas para producir, proteger y utilizar datos confiables.</p></div>
+        <div class="card"><h3>Observatorio Institucional de la Calidad</h3><p>Reunir información y análisis que ayuden a comprender los avances y orientar las decisiones.</p></div>
+      </div>
+      <div class="grid g2" style="margin-top:30px;align-items:start">
+        <div>
+          <div class="shead"><h2>¿Qué necesitamos para avanzar?</h2><p>El proyecto diseñó un índice que mide, en cinco niveles, qué tan preparada está cada dependencia.</p></div>
+          <div class="grid" style="gap:10px">
+            <div class="card"><h3>Gobernanza de datos</h3></div>
+            <div class="card"><h3>Captura y valoración del conocimiento</h3></div>
+            <div class="card"><h3>Apropiación de la información para decidir</h3></div>
+          </div>
+          <p style="margin-top:14px;font-size:15px;color:var(--muted)">Permite reconocer fortalezas, identificar necesidades y orientar los siguientes pasos con información.</p>
+        </div>
+        <div>
+          <div class="shead"><h2>¿En qué va la propuesta?</h2></div>
+          <div class="card"><h3>Formulación conceptual y técnica terminada</h3><p>Es el Anexo 18 del informe técnico y hace parte del componente de Gestión del Conocimiento y la Información.</p></div>
+          <div class="card" style="margin-top:12px"><h3>Socializada con la Dirección Nacional de Estrategia Digital</h3><p>Se presentó el 5 de junio de 2026, en una de las mesas técnicas del proyecto.</p></div>
+          <div class="note" style="margin-top:12px"><b>¿Cómo se relaciona contigo?</b> Una información confiable y conectada puede facilitar el seguimiento a las mejoras. Ese es uno de los propósitos del diseño de SISAICA; su implementación será un paso posterior.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= PARTICIPA ================= -->
+<main id="p-participa" role="tabpanel" aria-labelledby="t-participa" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Tu mirada puede abrir nuevas posibilidades</p>
+      <h1>Encuentra tu forma de participar</h1>
+      <p class="lede">Una pregunta, una conversación, una imagen o una propuesta: hay distintas formas de aportar. Explora las actividades según tu tiempo e intereses. También encontrarás opciones si no puedes asistir a los encuentros.</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="filters" id="f-act" role="group" aria-label="Filtrar actividades">
+        <button type="button" data-f="all" aria-pressed="true">Todas</button>
+        <button type="button" data-f="corta" aria-pressed="false">Hasta 10 minutos</button>
+        <button type="button" data-f="larga" aria-pressed="false">Para conversar con más tiempo</button>
+        <button type="button" data-f="sin" aria-pressed="false">Aportes sin asistir</button>
+      </div>
+      <div class="grid g2" id="acts"></div>
+    </div>
+  </section>
+  <section class="band alt">
+    <div class="wrap">
+      <div class="shead"><h2>Tu aporte al SIAC</h2><p>Tu experiencia puede ayudar a reconocer qué conservar y qué mejorar. El canal está previsto del 1 de octubre al 2 de diciembre, según el ciclo de cada sede. En esta maqueta puedes explorar cómo funcionaría.</p></div>
+      <form class="form" id="aporte-form" novalidate>
+        <p class="note" style="margin-bottom:18px"><b>Explora una demostración.</b> Este formulario permite conocer el recorrido de un aporte. No envía ni guarda información; evita escribir datos personales.</p>
+        <div class="field">
+          <label for="q">¿Qué debería conservar o mejorar la propuesta del SIAC para responder a tu experiencia en la Universidad?</label>
+          <span class="hint">Comparte tu idea con tus propias palabras. Puedes partir de una experiencia, una duda o una oportunidad de mejora.</span>
+          <textarea id="q" name="q" placeholder="Por ejemplo: me gustaría conocer qué mejoras se realizan a partir de la autoevaluación de mi programa."></textarea>
+        </div>
+        <div class="field">
+          <label for="ej">Un ejemplo concreto</label>
+          <span class="hint">Si quieres, comparte una situación que ayude a comprender tu propuesta. Evita incluir datos personales.</span>
+          <input id="ej" name="ej" type="text" placeholder="Opcional">
+        </div>
+        <div class="two field">
+          <div><label for="sede">Tu sede</label><select id="sede" name="sede"></select></div>
+          <div><label for="estamento">Tu vínculo con la Universidad</label>
+            <select id="estamento" name="estamento">
+              <option>Estudiante de pregrado</option><option>Estudiante de posgrado</option>
+              <option>Docente</option><option>Personal administrativo o trabajador</option>
+              <option>Egresado</option><option>Pensionado</option><option>Prefiero no decirlo</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-main" type="submit">Explorar el recorrido de mi aporte</button>
+        <div class="receipt" id="receipt" hidden>
+          <h4>Así sería el recorrido de tu aporte</h4>
+          <p>En el canal definitivo, tu aporte recibiría un código como <code id="rid">APT-BOG-000</code>. Ese código permitiría consultar su seguimiento sin publicar tu nombre.</p>
+          <p id="rdate"></p>
+          <p style="font-size:14px;color:var(--muted)">Esta es una demostración: el formulario no envía ni guarda información y el código generado es ilustrativo.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ================= SEDES ================= -->
+<main id="p-sedes" role="tabpanel" aria-labelledby="t-sedes" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Del 30 de septiembre al 27 de noviembre</p>
+      <h1>Sedes y agenda</h1>
+      <p class="lede">Explora los once encuentros previstos en las nueve sedes. Consulta la modalidad, la actividad principal y la fecha propuesta para conocer los resultados de cada encuentro.</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="mapwrap">
+        <div>
+          <svg viewBox="-7 -7 114 152" role="img" aria-label="Mapa de Colombia con las sedes de la Universidad Nacional">
+            <path class="land" d="M63.47 4.67L63.17 4.77L62.79 5.00L61.69 5.40L60.18 5.78L58.19 6.28L57.75 6.81L55.82 10.16L54.19 10.83L53.60 11.33L53.16 11.96L52.18 13.13L51.77 14.01L50.70 15.96L50.11 18.39L49.90 19.76L49.57 21.73L49.10 22.73L48.48 23.67L47.79 24.59L47.20 25.59L46.70 26.36L46.61 26.63L46.85 26.84L48.03 26.63L48.51 26.40L49.16 26.10L49.54 26.26L49.96 27.12L50.40 27.23L50.85 27.12L51.29 27.33L51.88 29.47L52.39 31.30L53.54 32.43L54.43 33.32L54.64 34.10L54.88 35.20L54.91 35.75L54.64 36.07L54.19 36.75L54.08 38.03L53.99 38.45L53.93 39.65L53.99 40.37L54.22 40.95L54.61 41.27L55.41 41.45L56.15 41.65L56.57 42.63L57.16 43.89L57.81 44.42L58.76 44.78L59.41 44.65L60.98 44.42L62.31 44.48L64.30 44.82L65.04 44.80L65.99 44.73L67.65 44.05L68.24 43.95L68.92 44.00L69.90 44.36L70.46 44.63L71.14 44.92L72.12 45.12L72.77 45.09L73.25 45.08L73.54 45.20L75.11 47.16L76.48 48.85L77.66 50.28L78.94 51.81L79.02 51.91L79.62 51.71L80.00 51.79L80.36 52.11L80.95 51.98L81.81 51.41L83.05 51.29L84.71 51.63L86.91 51.63L89.60 51.29L91.29 50.93L91.94 50.53L93.04 50.58L94.34 50.93L95.05 51.43L95.14 51.93L95.41 52.71L95.11 53.49L94.28 54.29L93.81 55.32L93.72 56.55L93.31 57.46L92.54 58.06L92.21 58.92L92.39 60.06L92.30 61.72L91.97 63.91L91.97 65.21L92.30 65.64L92.48 66.25L92.45 67.05L92.57 67.75L92.98 68.67L93.57 70.49L94.05 71.28L94.46 71.58L94.91 71.92L96.15 73.79L96.45 74.19L96.36 74.54L96.24 74.79L96.09 74.95L94.79 76.07L92.15 78.50L91.91 78.81L91.94 79.31L92.71 78.98L93.51 79.25L93.93 79.31L94.11 79.51L94.34 80.17L94.61 80.27L95.00 80.55L95.80 81.24L96.45 81.97L96.92 82.31L97.28 82.64L97.40 83.11L97.25 83.58L97.66 84.67L97.93 85.01L98.08 85.43L97.93 85.84L98.28 86.34L98.64 87.30L99.11 88.48L99.17 89.13L99.35 89.43L99.59 90.30L99.97 91.13L99.88 91.68L100.03 92.24L98.46 92.61L98.34 92.55L98.25 92.34L98.28 90.78L98.28 89.01L98.02 88.28L97.31 87.13L96.39 85.58L96.12 85.14L95.71 84.88L95.23 84.85L94.91 84.95L94.43 85.24L93.99 85.55L93.16 86.48L92.30 87.57L91.80 87.81L91.32 87.91L90.88 87.88L90.52 87.58L90.14 87.00L89.72 86.21L89.19 85.95L88.98 86.20L88.80 86.65L88.68 87.11L89.04 87.70L89.34 88.15L88.80 88.14L87.14 88.14L85.19 88.14L83.26 88.14L81.54 88.14L79.91 88.14L79.29 88.10L78.67 87.84L78.08 87.71L77.78 87.73L77.19 87.98L76.48 88.03L75.97 88.27L75.56 88.24L75.56 89.60L75.56 91.53L75.53 93.58L75.97 93.43L76.36 93.44L76.65 93.58L77.45 93.47L77.87 93.53L78.28 93.58L78.67 93.60L78.91 93.76L79.23 93.73L79.59 93.54L79.97 93.66L80.42 93.94L80.71 94.38L80.95 94.91L81.22 95.20L81.19 95.70L81.19 96.10L81.10 96.44L81.22 96.66L81.28 96.88L81.28 97.01L81.13 97.07L80.80 97.11L80.45 97.16L80.21 97.14L80.03 96.94L79.85 96.91L79.59 96.94L79.32 96.81L79.08 96.56L78.67 96.30L78.22 96.41L77.90 96.54L77.57 96.70L77.31 96.87L77.01 96.83L76.62 96.96L76.33 97.16L75.91 97.30L75.47 97.38L74.94 97.46L74.43 97.48L73.87 97.54L73.84 98.63L73.78 100.74L73.75 102.16L73.75 103.44L73.96 103.91L74.97 104.91L75.74 105.44L76.39 106.03L77.07 106.27L77.34 106.50L77.51 106.86L77.60 107.24L77.69 107.57L77.60 107.91L77.45 108.24L77.51 108.59L77.75 108.86L77.81 109.20L77.99 109.53L78.08 109.86L78.28 110.09L78.52 110.26L78.85 110.53L78.91 110.77L78.85 111.07L78.85 111.29L79.17 111.79L79.26 112.14L79.11 112.56L78.97 114.00L78.61 115.66L78.37 116.92L78.02 118.96L77.57 121.35L77.04 124.26L76.54 127.13L76.00 129.92L75.56 132.43L75.05 135.20L74.76 136.88L74.61 137.16L74.17 136.56L73.54 135.99L72.95 135.63L72.68 135.19L72.36 134.26L71.85 133.95L71.53 133.70L71.20 133.73L70.85 133.99L70.31 134.15L69.96 134.13L68.51 133.49L68.27 133.43L69.22 131.98L70.88 129.38L71.94 127.72L73.10 125.87L73.72 124.95L73.78 124.77L73.78 124.55L73.54 124.19L72.95 124.03L72.30 123.76L71.88 123.32L71.32 123.12L70.88 122.80L70.08 122.49L69.57 122.20L68.98 122.10L68.51 121.57L66.79 120.56L66.34 120.47L65.87 120.62L65.16 120.79L64.48 121.35L63.62 121.52L62.82 121.52L62.40 121.19L62.02 121.06L61.48 120.62L60.57 120.26L59.88 120.02L59.47 120.13L58.97 120.65L58.40 121.15L57.99 121.46L57.42 121.43L56.74 121.90L56.06 122.06L55.38 122.13L54.61 122.29L53.75 122.02L53.04 121.77L52.71 121.66L52.42 121.73L51.97 121.99L51.17 122.10L50.55 122.13L50.11 122.00L49.72 121.56L49.07 121.33L48.36 121.06L48.21 120.47L48.30 120.05L48.59 119.43L48.45 118.79L48.15 117.79L48.00 117.37L47.79 117.02L47.44 116.89L46.76 116.99L46.02 116.60L45.54 116.24L45.31 115.79L45.57 114.96L45.34 114.23L44.89 113.84L44.59 113.14L44.15 112.59L43.59 112.30L42.99 112.33L42.52 112.16L41.99 111.57L41.51 111.34L40.95 110.77L39.91 110.52L39.38 110.29L39.05 109.94L38.64 109.30L38.70 108.96L38.49 108.61L38.31 108.00L37.96 107.09L37.57 106.57L37.16 106.17L36.83 105.84L36.33 105.36L35.71 105.06L35.17 104.76L34.97 104.31L34.79 103.96L34.52 103.97L34.08 103.94L33.63 103.86L33.13 103.59L32.71 103.27L32.03 102.71L31.65 102.64L31.32 102.64L30.82 103.19L29.34 102.61L28.09 101.78L26.79 101.57L25.93 101.06L25.16 100.27L24.71 99.73L24.39 99.46L22.70 98.68L22.37 98.61L21.75 98.97L21.54 99.18L21.48 99.80L21.42 100.16L20.86 100.37L19.97 100.33L19.35 100.10L18.94 100.07L18.85 100.24L18.61 100.31L18.11 100.27L17.36 100.10L16.68 99.87L15.76 99.38L15.35 99.44L14.31 99.34L13.45 99.06L13.22 98.81L12.86 97.07L12.74 96.94L12.39 96.87L11.76 96.63L11.38 96.36L11.17 95.87L10.94 95.41L9.87 95.51L8.18 94.91L6.99 94.33L5.90 93.70L4.27 92.44L3.65 92.13L2.88 91.74L2.40 91.13L1.66 90.50L1.39 90.33L1.16 89.75L0.03 88.94L0.59 87.88L1.96 87.08L3.74 87.71L3.94 86.47L3.29 85.38L3.41 83.32L3.62 82.91L4.09 82.35L4.68 81.98L5.04 81.87L5.66 82.05L6.05 81.64L7.50 81.82L7.94 81.65L8.24 81.37L8.59 81.17L9.04 80.67L9.31 80.10L9.51 79.87L10.02 79.95L10.05 79.70L10.31 79.37L11.20 78.61L11.17 78.28L10.94 77.55L10.99 77.28L11.50 77.20L12.12 76.98L12.42 76.30L12.83 75.69L13.28 74.79L13.78 74.74L14.05 73.71L14.70 72.79L16.06 70.09L15.68 70.15L15.35 70.52L14.96 70.48L14.55 70.27L14.67 69.05L14.43 68.91L13.75 69.84L13.19 68.88L13.13 68.31L13.36 67.74L13.34 67.35L12.42 67.64L12.48 67.28L13.04 66.91L13.31 66.52L13.81 66.11L14.02 65.48L14.14 64.49L14.34 63.44L14.19 62.92L13.93 62.48L13.69 60.52L13.75 59.38L13.63 58.49L13.39 57.72L12.30 56.73L14.05 55.59L14.67 54.73L13.87 52.96L12.83 51.46L12.80 50.58L13.10 50.69L13.42 50.66L13.75 48.78L13.66 48.19L13.10 47.23L12.39 47.22L11.76 46.03L11.38 45.76L11.11 45.02L10.11 43.56L9.31 42.80L9.90 41.05L10.40 40.70L10.58 40.27L10.37 39.19L10.43 38.95L10.55 38.83L10.67 38.85L10.91 39.00L11.29 39.47L11.62 40.05L11.88 40.22L12.27 40.03L13.81 38.89L13.72 38.53L13.87 37.80L14.37 37.22L14.94 37.02L15.08 36.69L14.96 36.19L14.37 34.92L13.87 34.25L13.54 33.57L13.36 32.94L12.77 32.36L13.01 31.80L13.48 31.16L13.63 31.04L13.87 31.22L14.55 32.40L15.65 33.16L16.77 34.40L17.25 35.25L17.60 35.40L17.93 35.72L17.78 35.95L17.42 36.19L17.34 36.69L17.57 36.96L17.81 37.13L18.46 37.02L18.82 36.45L18.58 33.90L18.19 32.63L17.75 32.24L17.36 31.74L17.63 31.36L18.34 31.19L19.26 30.74L22.67 28.32L23.82 26.04L24.71 25.22L25.72 24.69L26.94 24.82L27.91 24.53L28.21 23.80L27.94 22.81L27.56 22.23L27.91 21.36L28.30 20.06L28.27 18.97L28.74 18.31L28.56 18.06L27.88 18.59L27.35 18.81L27.65 18.39L28.62 17.30L29.10 15.66L29.48 14.97L30.85 14.01L31.14 13.56L32.15 12.84L33.81 11.30L34.46 10.87L37.66 11.86L38.67 11.80L38.49 11.98L38.02 12.04L37.34 12.31L37.16 12.90L37.60 13.53L38.11 13.70L38.52 13.30L38.94 12.16L39.59 10.90L39.77 9.58L40.21 9.13L40.92 8.97L42.14 9.23L43.08 9.50L44.06 9.54L47.05 9.34L51.91 5.91L54.19 5.17L55.59 4.45L56.51 3.04L56.74 1.98L57.39 1.58L58.11 1.58L58.43 1.33L58.52 1.00L60.21 0.08L61.19 -0.03L62.02 -0.02L63.94 0.78L64.80 2.18L64.95 3.15L63.77 4.21L63.47 4.67ZM7.53 81.38L7.32 81.57L6.91 81.24L6.76 80.82L6.99 80.52L7.35 80.62L7.50 80.88L7.53 81.38Z"></path>
+            <rect class="inset" x="-5" y="-5" width="23" height="19" rx="1.5"></rect>
+            <circle class="pin" data-sede="I10" cx="6.5" cy="2" r="2.1"></circle>
+            <text class="lbl" x="6.5" y="10" text-anchor="middle">San Andrés</text>
+            <circle class="pin" data-sede="I11" cx="48.15" cy="16.81" r="2.1"></circle>
+            <text class="lbl" x="52" y="18" >La Paz</text>
+            <circle class="pin" data-sede="I09" cx="68.16" cy="44.00" r="2.1"></circle>
+            <text class="lbl" x="72" y="45.2">Orinoquía</text>
+            <circle class="pin" data-sede="I04" cx="28.42" cy="50.78" r="2.1"></circle>
+            <text class="lbl" x="24.6" y="52" text-anchor="end">Medellín</text>
+            <circle class="pin" data-sede="I05" cx="29.13" cy="60.68" r="2.1"></circle>
+            <text class="lbl" x="25.3" y="61.9" text-anchor="end">Manizales</text>
+            <circle class="pin" data-sede="I01" cx="40.71" cy="64.15" r="2.4"></circle>
+            <text class="lbl" x="44.6" y="65.4">Bogotá</text>
+            <circle class="pin" data-sede="I06" cx="22.47" cy="73.37" r="2.1"></circle>
+            <text class="lbl" x="18.6" y="74.6" text-anchor="end">Palmira</text>
+            <circle class="pin" data-sede="I08" cx="2.18" cy="87.50" r="2.1"></circle>
+            <text class="lbl" x="6" y="88.7">Tumaco</text>
+            <circle class="pin" data-sede="I07" cx="74.81" cy="134.6" r="2.1"></circle>
+            <text class="lbl" x="70.9" y="135.8" text-anchor="end">Amazonía</text>
+          </svg>
+          <p style="font-size:13.5px;color:var(--muted);margin-top:10px">Selecciona una sede en el mapa para ubicar su encuentro. San Andrés se muestra en un recuadro fuera de escala.</p>
+        </div>
+        <div class="maplist" id="ints"></div>
+      </div>
+      <p style="margin-top:20px;font-size:14.5px;color:var(--muted)">Consulta esta agenda para conocer los ajustes de fechas que confirmen las sedes.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ================= DEVOLUCIÓN ================= -->
+<main id="p-devolucion" role="tabpanel" aria-labelledby="t-devolucion" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Tu participación merece una respuesta</p>
+      <h1>Lo dijiste, quedó</h1>
+      <p class="lede">¿Qué sucede después de compartir una idea? La propuesta contempla una ficha de resultados por encuentro: qué escuchamos, cómo se analizaron los aportes y qué decisiones se tomaron. Aquí puedes conocer ese recorrido.</p>
+    </div>
+  </div>
+  <section class="band">
+    <div class="wrap">
+      <div class="grid g2">
+        <div class="card">
+          <span class="kicker">Tu idea recibe una de estas cuatro respuestas</span>
+          <dl class="resp">
+            <dt>Se incorpora</dt><dd>Qué cambia y dónde se puede consultar.</dd>
+            <dt>Se incorpora en parte</dt><dd>Qué se recoge y por qué el ajuste es parcial.</dd>
+            <dt>Se traslada</dt><dd>A qué dependencia se envió y cómo consultar el seguimiento.</dd>
+            <dt>No se incorpora</dt><dd>La razón concreta de la decisión.</dd>
+          </dl>
+          <p style="margin-top:14px;font-size:15px;color:var(--muted)">Mientras se analiza un aporte, el estado «En revisión» debe indicar un responsable y una fecha de respuesta. La decisión final debe explicar el resultado del análisis.</p>
+        </div>
+        <div class="card">
+          <span class="kicker">Compromisos previstos en la metodología</span>
+          <dl class="resp">
+            <dt>100 %</dt><dd>de los aportes con una decisión y su explicación.</dd>
+            <dt>30 días</dt><dd>como plazo máximo previsto entre el encuentro y la publicación de su ficha.</dd>
+            <dt>11 fichas</dt><dd>previstas antes del 18 de diciembre, una por encuentro.</dd>
+            <dt>Sin nombres</dt><dd>los aportes se identificarán con un código. Publicar nombres requerirá autorización.</dd>
+          </dl>
+          <p style="margin-top:14px;font-size:15px;color:var(--muted)">Los resultados deben incluir las cifras de participación y el contexto que ayude a comprenderlas.</p>
+        </div>
+      </div>
+      <div class="note" style="margin-top:22px"><b>Un recorrido que puedas consultar.</b> La metodología prevé una matriz de consulta con el código de cada aporte, su sede, fecha y la versión del documento revisada. Esta herramienta permitirá seguir el análisis y conocer la respuesta.</div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= PREGUNTAS ================= -->
+<main id="p-preguntas" role="tabpanel" aria-labelledby="t-preguntas" hidden>
+  <div class="pagehead">
+    <div class="arc" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow">Resuelve tus dudas y sigue explorando</p>
+      <h1>¿Qué te gustaría saber del SIAC?</h1>
+      <p class="lede">Empieza por estas preguntas para comprender la propuesta, el alcance de tu participación y lo que ocurrirá con los aportes.</p>
+    </div>
+  </div>
+  <section class="band"><div class="wrap"><div id="faq"></div></div></section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div class="footbrand">
+        <span class="lock"><img src="lockup2.png" alt="SIAC, Universidad Nacional de Colombia"></span>
+        <p class="sign">Educación de Calidad: UN Bien Común</p>
+      </div>
+      <div>
+        <h4>Documentos del Kit</h4>
+        <ul>
+          <li>01. Metodología de socialización</li>
+          <li>02. Plan de comunicaciones y parrilla Ciclo 5D</li>
+          <li>06. Piezas por intervención</li>
+          <li>07. Guías y materiales por actividad</li>
+          <li>10. Matriz de aportes y respuestas</li>
+          <li>11. Identidad gráfica</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Marco normativo</h4>
+        <ul>
+          <li>Ley 1188 de 2008</li>
+          <li>Decreto 1075 de 2015, modificado por el 1330 de 2019</li>
+          <li>Acuerdo 01 de 2025 del CESU</li>
+          <li>Decreto 1210 de 1993</li>
+          <li>Acuerdos 011 de 2005, 151 de 2014 y 015 de 2023 del CSU</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Responsables</h4>
+        <ul>
+          <li>Vicerrectoría General</li>
+          <li>Vicerrectoría Académica</li>
+          <li>Coordinación Fase II</li>
+          <li>Participación y Diálogo</li>
+          <li>Gestión del Conocimiento</li>
+          <li>Comunicaciones</li>
+        </ul>
+      </div>
+    </div>
+    <div class="palette">
+      <h4>Colores institucionales</h4>
+      <ul class="sw">
+        <li><i style="background:#00a99d"></i><b>Turquesa</b><code>#00A99D</code></li>
+        <li><i style="background:#292d67"></i><b>Azul</b><code>#292D67</code></li>
+        <li><i style="background:#ffb000"></i><b>Ámbar</b><code>#FFB000</code></li>
+        <li><i style="background:#6f278f"></i><b>Morado</b><code>#6F278F</code></li>
+        <li><i style="background:#fa0392"></i><b>Magenta</b><code>#FA0392</code></li>
+        <li><i style="background:#ffffff"></i><b>Blanco</b><code>#FFFFFF</code></li>
+      </ul>
+      <p style="margin-top:12px;font-size:13px;color:#9aa3c4;max-width:70ch">Paleta del Identificador Cálido 2026. Titulares en Ranchers. Los textos usan Asap como sustituta de Ancízar Sans, a la espera de los archivos de la fuente institucional.</p>
+    </div>
+    <div class="tags"><span>#SIACUNAL</span><span>#LoDijisteQuedó</span><span>#CalidadQueSeVive</span><span>#SIACenTuSede</span></div>
+    <p class="legal">Maqueta de trabajo del micrositio SIAC, construida sobre la metodología de socialización y el plan de comunicaciones de la Fase II. No es el sitio oficial de la Universidad Nacional de Colombia y no recoge datos de personas. Las fechas provienen de la parrilla Ciclo 5D y se actualizan cuando una sede confirma cambios. Fotografía institucional del Informe de Gestión de la Coordinación Funcional del SIAC.</p>
+  </div>
+</footer>
+
+<script>
+const ACTS=[
+ {n:1,t:"Pulso breve de opinión",d:"De 2 a 3 minutos",g:["corta"],p:"Tres preguntas cortas sobre qué entiendes del SIAC, qué duda te queda y qué mejora propones para tu sede. En papel o por un enlace, en un punto de encuentro del campus.",tags:["Toda la comunidad","Presencial y virtual"]},
+ {n:2,t:"Juego de preguntas",d:"De 5 a 8 minutos",g:["corta"],p:"Eliges una tarjeta o giras la ruleta, respondes con un ejemplo cercano y cierras diciendo qué debería mejorar. La actividad invita a compartir experiencias y puntos de vista, sin calificaciones.",tags:["Participación espontánea"]},
+ {n:3,t:"Conversaciones en mesas pequeñas",d:"De 45 a 60 minutos",g:["larga"],p:"Grupos de cinco o seis personas que conversan sobre qué funciona y conviene conservar, qué dificulta mejorar y qué debería atender la propuesta.",tags:["Actividad central en la mayoría de sedes"]},
+ {n:4,t:"Más voces en la conversación",d:"De 35 a 45 minutos",g:["larga"],p:"Un espacio para escuchar a grupos cuya experiencia necesita mayor presencia, como egresados, personal administrativo o estudiantes de posgrado. Cada persona cuenta con un turno inicial para aportar.",tags:["Para ampliar las voces participantes"]},
+ {n:5,t:"Círculo de palabra y mapa sencillo",d:"De 45 a 60 minutos",g:["larga"],p:"La dinámica se acuerda con referentes locales. Se habla de dónde se reconoce una buena práctica, dónde hay una dificultad y qué cambio ayudaría.",tags:["Amazonía y Tumaco","Con mediación cultural"]},
+ {n:6,t:"Elegir las mejoras más importantes",d:"De 5 a 10 minutos",g:["corta"],p:"Al cerrar otra actividad se reúnen hasta cinco propuestas. Cada persona elige dos y explica una de sus elecciones. Las necesidades minoritarias se conservan.",tags:["Dentro del cierre"]},
+ {n:7,t:"Tu aporte al SIAC",d:"De 3 a 5 minutos",g:["corta","sin"],p:"Comparte qué conservarías o mejorarías del SIAC a través de una pregunta abierta. La metodología contempla un buzón físico y un canal digital durante el ciclo de cada sede.",tags:["Participación sin asistir","Del 1 de octubre al 2 de diciembre"]},
+ {n:8,t:"Una imagen y una propuesta",d:"De 5 a 10 minutos",g:["corta","sin"],p:"Envías una foto, un dibujo o una descripción con dos frases: qué situación muestra y qué mejora propone. Sin personas identificables ni datos personales.",tags:["Opcional","Participación sin asistir"]},
+ {n:9,t:"Un caso para ponerse en el lugar de otros",d:"De 35 a 45 minutos",g:["larga"],p:"Un caso con roles: una evaluación detectó una dificultad y nadie sabe quién debe responder. El grupo propone una solución y señala qué necesita aclarar el SIAC.",tags:["Grupos de 6 a 10","Puede reemplazar las mesas"]},
+ {n:10,t:"Entrevista para profundizar",d:"De 20 a 30 minutos",g:["larga"],p:"Una conversación de hasta tres preguntas para profundizar en aspectos que requieren más información. Se utiliza cuando ayuda a comprender mejor la propuesta.",tags:["Puntual"]}];
+
+const INTS=[
+ {id:"I01",sede:"Bogotá, bloque 1",sub:"Piloto. Derecho, Ciencias Humanas, Ciencias Económicas y Artes",mod:"Presencial",ses:"30 de septiembre",fic:"15 de octubre",act:"Mesas pequeñas"},
+ {id:"I02",sede:"Bogotá, bloque 2",sub:"Ingeniería, Ciencias, Ciencias Agrarias y Medicina Veterinaria y de Zootecnia",mod:"Presencial",ses:"6 y 7 de octubre",fic:"22 de octubre",act:"Mesas pequeñas"},
+ {id:"I03",sede:"Bogotá, bloque 3",sub:"Medicina, Enfermería y Odontología",mod:"Presencial",ses:"14 y 15 de octubre",fic:"30 de octubre",act:"Mesas pequeñas"},
+ {id:"I04",sede:"Medellín",sub:"Jornada de sede",mod:"Presencial",ses:"20 y 21 de octubre",fic:"5 de noviembre",act:"Mesas pequeñas"},
+ {id:"I05",sede:"Manizales",sub:"Jornada de sede",mod:"Presencial",ses:"27 y 28 de octubre",fic:"12 de noviembre",act:"Mesas pequeñas"},
+ {id:"I06",sede:"Palmira",sub:"Ciclo virtual",mod:"Virtual",ses:"3 y 4 de noviembre",fic:"19 de noviembre",act:"Conversaciones en grupos pequeños"},
+ {id:"I07",sede:"Amazonía",sub:"Jornada en territorio",mod:"Presencial",ses:"10 y 11 de noviembre",fic:"26 de noviembre",act:"Círculo de palabra y mapa sencillo"},
+ {id:"I08",sede:"Tumaco",sub:"Jornada en territorio",mod:"Presencial",ses:"17 y 18 de noviembre",fic:"3 de diciembre",act:"Círculo de palabra y mapa sencillo"},
+ {id:"I09",sede:"Orinoquía",sub:"Ciclo virtual",mod:"Virtual",ses:"19 y 20 de noviembre",fic:"4 de diciembre",act:"Diálogo virtual"},
+ {id:"I10",sede:"Caribe",sub:"Ciclo virtual. Recupera el antecedente de agosto",mod:"Virtual",ses:"24 y 25 de noviembre",fic:"10 de diciembre",act:"Diálogo virtual"},
+ {id:"I11",sede:"La Paz",sub:"Ciclo virtual",mod:"Virtual",ses:"26 y 27 de noviembre",fic:"11 de diciembre",act:"Diálogo virtual"}];
+
+const FAQ=[
+  [
+    "¿Cómo se relacionan el SIAC y la acreditación?",
+    "El propósito del SIAC es fortalecer el mejoramiento continuo de la Universidad. La acreditación es uno de los procesos con los que se articula. Su alcance también incluye la evaluación, la participación, la información y el seguimiento a las mejoras."
+  ],
+  [
+    "¿Qué hace diferente esta participación?",
+    "La metodología combina conversaciones, actividades breves y una pregunta abierta. Además, prevé registrar, analizar y responder los aportes. Puedes elegir el espacio que mejor se ajuste a tu tiempo y evitar repetir una misma idea en varios canales."
+  ],
+  [
+    "¿Qué alcance tiene mi participación?",
+    "Esta fase permite conocer la propuesta y aportar a su revisión. Los aportes se registran, analizan y responden, y contribuyen a las decisiones institucionales. La aprobación corresponde a los órganos de gobierno universitario competentes. La propuesta contempla ajustes al Acuerdo 151 de 2014 y al marco de Claustros y Colegiaturas."
+  ],
+  [
+    "¿Puedo aportar si no asisto al encuentro?",
+    "Sí. La metodología contempla el canal «Tu aporte al SIAC», con una pregunta abierta y sin registro obligatorio, durante el ciclo de cada sede, entre el 1 de octubre y el 2 de diciembre. También prevé un buzón físico en el punto de encuentro. El formulario de esta maqueta es una demostración y no envía ni guarda aportes."
+  ],
+  [
+    "¿Cómo se protege mi identidad?",
+    "La metodología prevé identificar los aportes con un código para facilitar su seguimiento sin publicar nombres. La publicación de nombres requiere autorización. Para las actividades con imágenes se solicita evitar personas identificables y datos personales."
+  ],
+  [
+    "¿Cómo se amplía la participación en cada sede?",
+    "Si la participación es baja, la metodología prevé informar las cifras y su contexto, ampliar el canal cinco días y buscar otras formas de escuchar a la comunidad: tarjetas en papel, apoyo de multiplicadores y conversaciones con grupos que aún no estén representados."
+  ],
+  [
+    "¿Qué ocurre si se aplaza un encuentro?",
+    "Se ajusta la agenda y se mantiene la información necesaria para orientar a la comunidad. La metodología fija el 18 de diciembre como fecha límite prevista para la publicación de resultados. Consulta la agenda para conocer los cambios que confirmen las sedes."
+  ],
+  [
+    "¿Dónde podré consultar la propuesta y sus cambios?",
+    "La versión definitiva del micrositio deberá ofrecer acceso al documento vigente, su fecha y su registro de cambios. Esta maqueta presenta las referencias documentales; todavía no incorpora los enlaces de consulta."
+  ],
+  [
+    "¿Cómo ayuda el ciclo ACTÚA a mejorar?",
+    "Propone cinco pasos conectados: Apreciar lo que funciona, Comprender las causas y experiencias, Trazar las mejoras, Unir a quienes las harán posibles y Aprender de los resultados. Lo aprendido permite iniciar un nuevo ciclo de mejora."
+  ]
+];
+
+/* ---- actividades ---- */
+const actsEl=document.getElementById("acts");
+function renderActs(f){
+  actsEl.innerHTML=ACTS.filter(a=>f==="all"||a.g.includes(f)).map(a=>`
+   <article class="act"><span class="n">${a.n}</span><div>
+     <h3>${a.t}</h3><p>${a.p}</p>
+     <div class="meta"><span class="tag on">${a.d}</span>${a.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+   </div></article>`).join("");
+}
+renderActs("all");
+
+/* ---- intervenciones ---- */
+const intsEl=document.getElementById("ints");
+intsEl.innerHTML=INTS.map(i=>`
+ <article class="int" data-sede="${i.id}"><span class="id">${i.id}</span><div>
+   <h3>${i.sede}</h3><p class="sub">${i.sub}</p>
+   <dl class="dates">
+     <div><dt>Modalidad</dt><dd>${i.mod}</dd></div>
+     <div><dt>Sesión principal</dt><dd>${i.ses}</dd></div>
+     <div><dt>Resultados del encuentro</dt><dd>${i.fic}</dd></div>
+     <div><dt>Actividad central</dt><dd style="font-weight:400">${i.act}</dd></div>
+   </dl></div></article>`).join("");
+
+function highlight(id,on){
+  document.querySelectorAll(`.int[data-sede="${id}"]`).forEach(e=>e.classList.toggle("hot",on));
+  document.querySelectorAll(`.pin[data-sede="${id}"]`).forEach(e=>e.classList.toggle("hot",on));
+}
+document.querySelectorAll(".pin").forEach(p=>{
+  const id=p.dataset.sede;
+  const on=()=>highlight(id,true), off=()=>highlight(id,false);
+  p.addEventListener("mouseenter",on); p.addEventListener("mouseleave",off);
+  p.addEventListener("focus",on); p.addEventListener("blur",off);
+  p.addEventListener("click",()=>{
+    highlight(id,true);
+    const el=document.querySelector(`.int[data-sede="${id}"]`);
+    if(el) el.scrollIntoView({behavior:"smooth",block:"center"});
+    setTimeout(()=>highlight(id,false),2400);
+  });
+});
+
+/* ---- filtros ---- */
+const fbox=document.getElementById("f-act");
+fbox.addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  fbox.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b)));
+  renderActs(b.dataset.f);
+});
+
+/* ---- preguntas ---- */
+document.getElementById("faq").innerHTML=FAQ.map(([q,a])=>`<details><summary>${q}</summary><div class="ans">${a}</div></details>`).join("");
+
+/* ---- formulario ---- */
+const sedeSel=document.getElementById("sede");
+const SEDES=[...new Map(INTS.map(i=>[i.sede.split(",")[0],i])).values()];
+sedeSel.innerHTML=SEDES.map(i=>`<option value="${i.id}">${i.sede.split(",")[0]}</option>`).join("");
+document.getElementById("aporte-form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const q=document.getElementById("q");
+  if(!q.value.trim()){q.focus();return;}
+  const it=INTS.find(i=>i.id===sedeSel.value)||INTS[0];
+  const slug=it.sede.split(",")[0].normalize("NFD").replace(/[̀-ͯ]/g,"").slice(0,3).toUpperCase();
+  document.getElementById("rid").textContent=`APT-${slug}-${Math.floor(Math.random()*900)+100}`;
+  document.getElementById("rdate").textContent=`Se analizaría junto con aportes del mismo tema, conservando su código. La decisión y su explicación se incluirían en la ficha de ${it.id} ${it.sede}, prevista para el ${it.fic}.`;
+  const r=document.getElementById("receipt"); r.hidden=false;
+  r.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+
+/* ---- pestañas ---- */
+const TABS=["siac","calidad","normatividad","sisaica","participa","sedes","devolucion","preguntas"];
+const tabEls=TABS.map(n=>document.getElementById("t-"+n));
+function show(name,push){
+  if(!TABS.includes(name)) name="siac";
+  TABS.forEach(n=>{
+    const sel=n===name;
+    document.getElementById("t-"+n).setAttribute("aria-selected",String(sel));
+    document.getElementById("p-"+n).hidden=!sel;
+  });
+  if(push && location.hash.slice(1)!==name) location.hash=name;
+}
+tabEls.forEach((b,i)=>{
+  b.addEventListener("click",()=>{show(TABS[i],true);window.scrollTo({top:0,behavior:"smooth"});});
+  b.addEventListener("keydown",e=>{
+    const d=e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+    if(!d) return;
+    e.preventDefault();
+    const j=(i+d+TABS.length)%TABS.length;
+    tabEls[j].focus(); show(TABS[j],true);
+  });
+});
+document.querySelectorAll("[data-go]").forEach(a=>{
+  a.addEventListener("click",e=>{e.preventDefault();show(a.dataset.go,true);window.scrollTo({top:0,behavior:"smooth"});});
+});
+window.addEventListener("hashchange",()=>show(location.hash.slice(1),false));
+show(location.hash.slice(1)||"siac",false);
+</script>
+</body>
+</html>
