@@ -72,6 +72,15 @@ body.siac-site #services {
   z-index: 201;
 }
 
+/* Franja de navegación SIAC (fallback sin navigationBack.png del kit UNAL) */
+body.siac-site #unalTop .navigation,
+body.siac-site #unalTop .main_menu.navbar,
+body.siac-site #unalTop #navbar_content {
+  background: #666;
+  background-color: #666;
+  color: #fff;
+}
+
 body.siac-site #unalTop .navigation .site-url,
 body.siac-site #unalTop .navigation .site-url a {
   color: #fff;
@@ -83,9 +92,28 @@ body.siac-site #unalTop .main_menu .site-url a {
 
 /* Cabecera UNAL: contraste en menú principal y desplegables (no heredar estilos del área azul) */
 body.siac-site #unalTop .navigation .mainMenu .btn,
-body.siac-site #unalTop .navigation .mainMenu .btn-default {
+body.siac-site #unalTop .navigation .mainMenu .btn-default,
+body.siac-site #unalTop .navigation .mainMenu a.btn {
   color: #fff !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  font-family: "Ancizar sans", Arial, Helvetica, sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  line-height: 1.35 !important;
+  letter-spacing: normal !important;
+  padding: 6px 12px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: inline-block !important;
+  text-decoration: none !important;
+}
+
+body.siac-site #unalTop .navigation .mainMenu .btn-group .dropdown-toggle {
+  font-family: "Ancizar sans", Arial, Helvetica, sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
 }
 
 body.siac-site #unalTop .dropdown-menu {
@@ -864,6 +892,40 @@ main.detalle .lead {
 
 .siac-page-slides .siac-slide-figures {
   margin: 0;
+}
+
+.siac-gallery-section--companion {
+  margin-top: 0.25rem;
+  padding-top: 0;
+  border-top: none;
+}
+
+.siac-slide-panel--wide {
+  max-width: none;
+}
+
+.siac-slide-figures--grid,
+.siac-slide-figures--architecture {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .siac-slide-figures--grid,
+  .siac-slide-figures--architecture {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .siac-slide-figures--architecture .siac-slide-figure:nth-child(n + 3) {
+    grid-column: 1 / -1;
+  }
+}
+
+.siac-slide-figures--grid .siac-slide-figure,
+.siac-slide-figures--architecture .siac-slide-figure {
+  margin-bottom: 0;
 }
 
 .siac-pillar-card,

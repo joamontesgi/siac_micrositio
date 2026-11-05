@@ -1,6 +1,15 @@
-<div class="siac-slide-panel">
+@php
+    $figuresLayout = $layout ?? null;
+@endphp
+<div @class([
+    'siac-slide-panel',
+    'siac-slide-panel--wide' => in_array($figuresLayout, ['grid', 'architecture'], true),
+])>
     <p class="siac-slide-panel-label">Diapositiva — simulacro 6 oct 2026</p>
-    <div class="siac-slide-figures" aria-label="Diapositivas de la presentación">
+    <div @class([
+        'siac-slide-figures',
+        'siac-slide-figures--' . $figuresLayout => $figuresLayout,
+    ]) aria-label="Diapositivas de la presentación">
         @foreach ($images as $image)
             <figure class="siac-slide-figure">
                 <a href="{{ asset($image['src']) }}" target="_blank" rel="noopener" class="siac-slide-figure-link">
